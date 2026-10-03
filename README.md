@@ -1,69 +1,88 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling.png" width="80" alt="Stirling PDF logo">
+  <img src="docs/readme/logo.png" width="96" alt="PDF Control logo">
 </p>
 
-<h1 align="center">Stirling PDF - The Open-Source PDF Platform</h1>
-
-Stirling PDF is a powerful, open-source PDF editing platform. Run it as a personal desktop app, in the browser, or deploy it on your own servers with a private API. Edit, sign, redact, convert, and automate PDFs without sending documents to external services.
+<h1 align="center">PDF Control</h1>
 
 <p align="center">
-  <a href="https://hub.docker.com/r/stirlingtools/stirling-pdf">
-    <img src="https://img.shields.io/docker/pulls/frooodle/s-pdf" alt="Docker Pulls">
+  <strong>Private PDF editing for desktop, browser, and self-hosted servers.</strong><br>
+  Merge, split, compress, sign, redact, convert, and automate — without sending documents to someone else’s cloud by default.
+</p>
+
+<p align="center">
+  <a href="https://github.com/MohOneX/PDF-Control/stargazers">
+    <img src="https://img.shields.io/github/stars/MohOneX/PDF-Control?style=social" alt="GitHub stars">
   </a>
-  <a href="https://discord.gg/HYmhKj45pU">
-    <img src="https://img.shields.io/discord/1068636748814483718?label=Discord" alt="Discord">
+  <a href="https://github.com/MohOneX/PDF-Control/issues">
+    <img src="https://img.shields.io/github/issues/MohOneX/PDF-Control" alt="GitHub issues">
   </a>
-  <a href="https://scorecard.dev/viewer/?uri=github.com/Stirling-Tools/Stirling-PDF">
-    <img src="https://api.scorecard.dev/projects/github.com/Stirling-Tools/Stirling-PDF/badge" alt="OpenSSF Scorecard">
-  </a>
-  <a href="https://github.com/Stirling-Tools/stirling-pdf">
-    <img src="https://img.shields.io/github/stars/stirling-tools/stirling-pdf?style=social" alt="GitHub Repo stars">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-Open%20Core-blue" alt="License">
   </a>
 </p>
 
-![Stirling PDF - Dashboard](images/home-light.png)
+![PDF Control hero](docs/readme/hero.jpg)
 
-## Key Capabilities
+## Product preview
 
-- **Everywhere you work** - Desktop client, browser UI, and self-hosted server with a private API.
-- **50+ PDF tools** - Edit, merge, split, sign, redact, convert, OCR, compress, and more.
-- **Automation & workflows** - No-code pipelines direct in UI with APIs to process millions of PDFs.
-- **Enterprise‑grade** - SSO, auditing, and flexible on‑prem deployments.
-- **Developer platform** - REST APIs available for nearly all tools to integrate into your existing systems.
-- **Global UI** - Interface available in 40+ languages.
+| Light | Dark |
+| :---: | :---: |
+| ![PDF Control dashboard light](docs/readme/dashboard-light.jpg) | ![PDF Control dashboard dark](docs/readme/dashboard-dark.jpg) |
 
-For a full feature list, see the docs: **https://docs.stirlingpdf.com**
+![PDF Control feature highlights](docs/readme/features.jpg)
 
-## Quick Start
+## Why PDF Control
+
+- **Stay in control of your files** — process locally on desktop or on infrastructure you run.
+- **50+ PDF tools** — edit, merge, split, sign, redact, convert, OCR, compress, and more.
+- **Desktop + web + API** — same platform for interactive work and automated pipelines.
+- **Bilingual-ready UI** — language tooling and localization support included (including EN/AR toggle work).
+- **Automation** — no-code workflows in the UI, plus REST APIs for integrations.
+- **Self-hosted friendly** — Docker and local development via Task.
+
+## Quick start
+
+### Docker
 
 ```bash
 docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf
 ```
 
-Then open: http://localhost:8080
+Open [http://localhost:8080](http://localhost:8080).
 
-For full installation options (including desktop and Kubernetes), see our [Documentation Guide](https://docs.stirlingpdf.com/#documentation-guide).
+### Local development
 
-## Resources
+Requires JDK 25, Node.js, and [Task](https://taskfile.dev/).
 
-- [**Documentation**](https://docs.stirlingpdf.com)
-- [**Homepage**](https://stirling.com)
-- [**API Docs**](https://registry.scalar.com/@stirlingpdf/apis/stirling-pdf-processing-api/)
-- [**Server Plan & Enterprise**](https://docs.stirlingpdf.com/Paid-Offerings)
+```bash
+task install
+task dev
+```
 
-## Support
+- Backend: `http://localhost:8080`
+- Frontend: `http://localhost:5173`
 
-- **Community**: [Discord](https://discord.gg/HYmhKj45pU)
-- **Bug Reports**: [GitHub Issues](https://github.com/Stirling-Tools/Stirling-PDF/issues)
+Useful commands:
 
-## Contributing
+| Command | Purpose |
+| --- | --- |
+| `task --list` | List available tasks |
+| `task check` | Lint, typecheck, and test |
+| `task frontend:dev` | Frontend only |
+| `task backend:dev` | Backend only |
+| `task desktop:dev` | Desktop (Tauri) development |
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [DeveloperGuide.md](DeveloperGuide.md) for architecture and contribution details.
 
-This project uses [Task](https://taskfile.dev/) as a unified command runner for all build, dev, and test commands. Run `task dev` to get started running the editor, run `task` to see the most common commands, or see the [Developer Guide](DeveloperGuide.md) for full details.
+## Repository
 
-For adding translations, see the [Translation Guide](devGuide/HowToAddNewLanguage.md).
+- **GitHub:** [https://github.com/MohOneX/PDF-Control](https://github.com/MohOneX/PDF-Control)
+- **Issues:** [https://github.com/MohOneX/PDF-Control/issues](https://github.com/MohOneX/PDF-Control/issues)
+
+## Attribution
+
+PDF Control is based on the open-core [Stirling PDF](https://github.com/Stirling-Tools/Stirling-PDF) project. Upstream branding, docs, and SaaS offerings remain with their respective owners. This repository customizes branding, UI, and local product experience as **PDF Control**.
 
 ## License
 
-Stirling PDF is open-core. See [LICENSE](LICENSE) for details.
+Open-core. See [LICENSE](LICENSE) for details.

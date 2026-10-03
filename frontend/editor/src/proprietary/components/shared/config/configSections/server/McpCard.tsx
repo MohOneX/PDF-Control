@@ -83,7 +83,7 @@ export function McpCard({
                 <InfoTooltip
                   label={t(
                     "admin.settings.mcp.mode.description",
-                    "OAuth needs an external IdP. API key uses a Stirling per-user API key (X-API-KEY) - simplest for self-host.",
+                    "OAuth needs an external IdP. API key uses a PDF Control per-user API key (X-API-KEY) - simplest for self-host.",
                   )}
                 />
               </Group>
@@ -107,7 +107,7 @@ export function McpCard({
               <Text size="xs">
                 {t(
                   "admin.settings.mcp.apikeyNote",
-                  "Clients send a Stirling API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account → API Keys.",
+                  "Clients send a PDF Control API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account → API Keys.",
                 )}
               </Text>
             </Alert>
@@ -250,7 +250,7 @@ export function McpCard({
                   <Text fw={500} size="sm">
                     {t(
                       "admin.settings.mcp.requireAccount.label",
-                      "Require an existing Stirling account",
+                      "Require an existing PDF Control account",
                     )}{" "}
                     <InfoTooltip
                       label={t(
@@ -287,7 +287,7 @@ export function McpCard({
                     <InfoTooltip
                       label={t(
                         "admin.settings.mcp.usernameClaim.description",
-                        "JWT claim matched against a Stirling username (e.g. sub, email, preferred_username).",
+                        "JWT claim matched against a PDF Control username (e.g. sub, email, preferred_username).",
                       )}
                     />
                   </Group>

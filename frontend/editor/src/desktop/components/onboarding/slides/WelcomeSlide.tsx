@@ -10,7 +10,7 @@ const WelcomeSlideTitle = () => (
   <Trans
     i18nKey="onboarding.desktopWelcome.title"
     components={{ product: <span className={styles.productWord} /> }}
-    defaults="Welcome to Stirling <product>Desktop</product>"
+    defaults="Welcome to PDF Control <product>Desktop</product>"
   />
 );
 

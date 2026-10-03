@@ -200,13 +200,13 @@ export const DefaultAppSlide: Story = {
   render: () => (
     <Card
       hero={<DefaultAppHero />}
-      title="Open every PDF in Stirling"
-      body="Make Stirling your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings."
+      title="Open every PDF in PDF Control"
+      body="Make PDF Control your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings."
       buttons={[
         { key: "skip", label: "Not now", action: "skip" },
         {
           key: "set",
-          label: "Make Stirling my default",
+          label: "Make PDF Control my default",
           primary: true,
           action: "set",
         },
@@ -220,7 +220,7 @@ export const FolderOffer: Story = {
   render: () => (
     <Card
       hero={<FolderHero />}
-      title="See what Stirling can do with a whole folder"
+      title="See what PDF Control can do with a whole folder"
       body={
         <div>
           <p>
@@ -321,7 +321,7 @@ function ResultsView({
           <BrandMark height="2.25rem" />
           <h2 className={styles.viewHeading}>Your Downloads, sorted</h2>
           <p className={styles.viewLead}>
-            Stirling read {total} PDFs and sorted them into {groups.length}{" "}
+            PDF Control read {total} PDFs and sorted them into {groups.length}{" "}
             types.
           </p>
         </header>
@@ -497,15 +497,15 @@ function WalkthroughDemo({ pdfsInFolder, msPerFile }: WalkthroughArgs) {
         opened
         hero={<DefaultAppHero />}
         slideKey="default-app"
-        title="Open every PDF in Stirling"
-        body="Make Stirling your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings."
+        title="Open every PDF in PDF Control"
+        body="Make PDF Control your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings."
         stepIndex={0}
         stepCount={2}
         buttons={[
           { key: "skip", label: "Not now", action: "next" },
           {
             key: "set",
-            label: "Make Stirling my default",
+            label: "Make PDF Control my default",
             primary: true,
             action: "next",
           },
@@ -522,7 +522,7 @@ function WalkthroughDemo({ pdfsInFolder, msPerFile }: WalkthroughArgs) {
         opened
         hero={<FolderHero />}
         slideKey="folder"
-        title="See what Stirling can do with a whole folder"
+        title="See what PDF Control can do with a whole folder"
         body={
           <div>
             <p>

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { message } from "@tauri-apps/plugin-dialog";
 import { useFileSelectors, useFileActions } from "@app/contexts/FileContext";
@@ -16,6 +17,9 @@ export function useExitWarning() {
   selectorsRef.current = selectors;
 
   useEffect(() => {
+    if (!isTauri()) {
+      return;
+    }
     const appWindow = getCurrentWindow();
 
     const handleCloseRequested = async (event: {

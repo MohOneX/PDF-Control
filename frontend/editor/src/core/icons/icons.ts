@@ -393,6 +393,7 @@ import Slack from "@app/icons/svg/third-party/slack.svg?react";
 import Splunk from "@app/icons/svg/third-party/splunk.svg?react";
 import Sumologic from "@app/icons/svg/third-party/sumologic.svg?react";
 import Teams from "@app/icons/svg/third-party/teams.svg?react";
+import Whatsapp from "@app/icons/svg/third-party/whatsapp.svg?react";
 import Zapier from "@app/icons/svg/third-party/zapier.svg?react";
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
@@ -797,6 +798,7 @@ export const ICONS = {
   splunk: { Component: Splunk, kind: "brand" },
   sumologic: { Component: Sumologic, kind: "brand" },
   teams: { Component: Teams, kind: "brand" },
+  whatsapp: { Component: Whatsapp, kind: "brand" },
   zapier: { Component: Zapier, kind: "brand" },
 } as const satisfies Record<string, IconEntry>;
 

@@ -94,7 +94,7 @@ export function priceQuote(cfg: Cfg) {
       ? "Air-gapped"
       : cfg.deployment === "selfhost"
         ? "Self-hosted"
-        : "Stirling Cloud";
+        : "PDF Control Cloud";
 
   type Kind = "RECURRING" | "ONE_TIME" | "DISCOUNT" | "INCLUDED";
   const lines: {
@@ -282,17 +282,17 @@ export const procurementSaasHandlers = [
       docId: "enterprise-agreement",
       version: "0.9.1",
       versionLabel: "SEA v0.9.1",
-      displayName: "Stirling Enterprise Agreement",
+      displayName: "PDF Control Enterprise Agreement",
       effectiveDate: "2026-07-10",
       status: "draft",
       markdown: [
-        "# Stirling Enterprise Agreement",
+        "# PDF Control Enterprise Agreement",
         "## Part A — Master Services Agreement",
-        "Provider will provide the Stirling PDF Processor and Editor as described in the Order Form.",
+        "Provider will provide the PDF Control Processor and Editor as described in the Order Form.",
         `## Part B — Order Form · ${q.quoteNumber ?? "Q-MOCK"}`,
         "| Term | Value |",
         "| --- | --- |",
-        "| Subscription | Enterprise · Stirling Cloud |",
+        "| Subscription | Enterprise · PDF Control Cloud |",
         "| Escalator | +3% at each anniversary during the Term |",
         "## Part C — Data Processing Addendum",
         "Provider processes Personal Data only on Customer's documented instructions.",

@@ -36,7 +36,7 @@ export function useServerFolderBlock(): string | null {
   if (mode === "local" || mode === null) {
     return t(
       "filesPage.serverFolderNeedsConnection",
-      "Sign in to Stirling Cloud or connect a self-hosted server to use server folders.",
+      "Sign in to PDF Control Cloud or connect a self-hosted server to use server folders.",
     );
   }
   return coreReason;

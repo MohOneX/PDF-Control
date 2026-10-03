@@ -148,7 +148,7 @@ function ProcessorCard({ snap, isLeader, onTurnOn }: ProcessorCardProps) {
                 {" — "}
                 {t(
                   "payg.free.cta.benefit3Body",
-                  "call any Stirling endpoint programmatically",
+                  "call any PDF Control endpoint programmatically",
                 )}
               </span>
             </li>

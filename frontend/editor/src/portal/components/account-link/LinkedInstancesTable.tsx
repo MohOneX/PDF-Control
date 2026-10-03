@@ -93,7 +93,7 @@ export function LinkedInstancesTable({
         <p>
           {t(
             "settings.connectedInstances.confirmBody",
-            "This revokes the instance’s access to your team in Stirling Cloud. It does not delete local files or remove usage already recorded. To connect again, follow the original connection steps on the instance.",
+            "This revokes the instance’s access to your team in PDF Control Cloud. It does not delete local files or remove usage already recorded. To connect again, follow the original connection steps on the instance.",
           )}
         </p>
       </Modal>

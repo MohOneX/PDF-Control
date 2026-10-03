@@ -62,7 +62,7 @@ export function AccountConnectionNotice() {
               )
             : t(
                 "portal.accountLink.connectionNotice.offlineTitle",
-                "Stirling Cloud is unreachable",
+                "PDF Control Cloud is unreachable",
               )
       }
       action={
@@ -85,12 +85,12 @@ export function AccountConnectionNotice() {
       {expired
         ? t(
             "portal.accountLink.connectionNotice.expiredBody",
-            "This server has not reached Stirling Cloud within its offline allowance. Cloud-backed Team features and Processor work are paused. Existing data and installed licence rights are preserved. Access returns automatically after a successful connection confirms your plan.",
+            "This server has not reached PDF Control Cloud within its offline allowance. Cloud-backed Team features and Processor work are paused. Existing data and installed licence rights are preserved. Access returns automatically after a successful connection confirms your plan.",
           )
         : revoked
           ? t(
               "portal.accountLink.connectionNotice.revokedBody",
-              "Stirling Cloud rejected this account connection. Reconnect the account in Settings to restore eligible cloud-backed features.",
+              "PDF Control Cloud rejected this account connection. Reconnect the account in Settings to restore eligible cloud-backed features.",
             )
           : t(
               "portal.accountLink.connectionNotice.offlineBody",

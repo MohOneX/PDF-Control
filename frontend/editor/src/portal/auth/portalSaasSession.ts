@@ -24,7 +24,7 @@ function clearRecoveryPrompt(): void {
 /** Browser authorization can expire while the instance remains linked. */
 export class SaasSessionRequiredError extends Error {
   constructor() {
-    super("Sign in again to renew access to your Stirling account.");
+    super("Sign in again to renew access to your PDF Control account.");
     this.name = "SaasSessionRequiredError";
   }
 }

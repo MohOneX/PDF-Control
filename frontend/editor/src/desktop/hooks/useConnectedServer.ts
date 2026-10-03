@@ -9,7 +9,7 @@ function isServerMode(mode: ConnectionMode | null): boolean {
   return mode === "saas" || mode === "selfhosted";
 }
 
-/** Whether the app is signed in to Stirling Cloud or a self-hosted server. Starts false: this
+/** Whether the app is signed in to PDF Control Cloud or a self-hosted server. Starts false: this
  *  gates surfaces that fetch on mount, and the bundled backend 404s every one of those calls. */
 export function useConnectedServer(): boolean {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

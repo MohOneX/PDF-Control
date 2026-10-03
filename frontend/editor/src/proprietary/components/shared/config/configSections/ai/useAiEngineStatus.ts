@@ -11,7 +11,7 @@ export interface AiEngineStatusData {
   smartModel?: string | null;
   fastModel?: string | null;
   error?: string | null;
-  /** Cloud mode only: did the Stirling Cloud host answer its public status endpoint. */
+  /** Cloud mode only: did the PDF Control Cloud host answer its public status endpoint. */
   cloudUp?: boolean | null;
   /** Cloud mode only: does that deployment lend its AI to linked servers. */
   cloudSharingEnabled?: boolean | null;
@@ -95,7 +95,7 @@ export function formatAge(
 }
 
 /**
- * Whether this server is linked to a Stirling account, which is what makes cloud AI selectable.
+ * Whether this server is linked to a PDF Control account, which is what makes cloud AI selectable.
  * Its own hook rather than part of the status call: link state is a property of the server, not of
  * the engine, and the AI page is not the only thing that would want it.
  */

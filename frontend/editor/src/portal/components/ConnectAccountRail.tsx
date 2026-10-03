@@ -37,7 +37,7 @@ export function ConnectAccountRail() {
               )
             : t(
                 "portal.accountLink.rail.adminSub",
-                "Ask your server administrator to link a Stirling account for more credits. Manual PDF tools are still available.",
+                "Ask your server administrator to link a PDF Control account for more credits. Manual PDF tools are still available.",
               )}
           {resets && (
             <>

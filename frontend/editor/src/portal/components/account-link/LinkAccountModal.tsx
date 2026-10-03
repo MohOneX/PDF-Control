@@ -150,7 +150,7 @@ export function LinkAccountModal({
       footer={stepFooter()}
     >
       <StepModalHeader
-        brand={t("portal.accountLink.modal.identity", "Stirling account")}
+        brand={t("portal.accountLink.modal.identity", "PDF Control account")}
         title={title}
         {...stepChrome}
         closeLabel={t("portal.accountLink.connect.close", "Close")}
@@ -172,7 +172,7 @@ export function LinkAccountModal({
           )
         : t(
             "portal.accountLink.modal.linkTitle",
-            "Connect your Stirling account",
+            "Connect your PDF Control account",
           );
     }
     if (step === "handoff") {
@@ -231,7 +231,7 @@ export function LinkAccountModal({
         : t("portal.accountLink.connect.notNow", "Not now");
       const start = reauth
         ? t("portal.accountLink.modal.continueReauth", "Sign in again")
-        : t("portal.accountLink.connect.start", "Connect Stirling account");
+        : t("portal.accountLink.connect.start", "Connect PDF Control account");
       return (
         <>
           <Button variant="quiet" accent="neutral" onClick={onClose}>

@@ -75,9 +75,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   // The mode resolved to a concrete light/dark base.
   const colorScheme = resolveColorScheme(themeMode, systemScheme);
 
-  // Mirror the scheme to <html>. The accent is fixed to the default (neutral
-  // surfaces + blue buttons): data-accent="default" and no --user-* overrides,
-  // so colors.css resolves --c-primary to its static blue fallback.
+  // Mirror the scheme to <html>. Accent stays on the default track (neutral
+  // surfaces + brand-red buttons): data-accent="default" and no --user-*
+  // overrides, so colors.css resolves --c-primary to the PDF Control brand red.
   useIsomorphicEffect(() => {
     const root = document.documentElement;
     root.setAttribute("data-theme", colorScheme);

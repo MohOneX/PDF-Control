@@ -72,6 +72,36 @@ export function setupApiInterceptors(client: AxiosInstance): void {
       const skipForSaaSBackend =
         await operationRouter.shouldSkipBackendReadyCheck(originalUrl);
 
+      // Backend readiness check — block mutating calls until the bundled backend
+      // has a port and is healthy (local and SaaS modes both use it for local tools).
+      const backendHealthy = tauriBackendService.isOnline;
+      const backendStatus = tauriBackendService.getBackendStatus();
+      const backendPort = tauriBackendService.getBackendPort();
+
+      console.debug(
+        `[apiClientSetup] Backend readiness check for ${extendedConfig.url}: skipCheck=${skipCheck}, skipForSaaSBackend=${skipForSaaSBackend}, backendHealthy=${backendHealthy}, backendStatus=${backendStatus}, backendPort=${backendPort}`,
+      );
+
+      if (!skipCheck && !skipForSaaSBackend && !backendHealthy) {
+        const method = (extendedConfig.method || "get").toLowerCase();
+        if (method !== "get") {
+          const now = Date.now();
+          if (now - lastBackendToast > BACKEND_TOAST_COOLDOWN_MS) {
+            lastBackendToast = now;
+            alert({
+              alertType: "error",
+              title: i18n.t("backendHealth.offline", "Backend Offline"),
+              body: i18n.t(
+                "backendHealth.wait",
+                "Please wait for the backend to finish launching and try again.",
+              ),
+              isPersistentPopup: false,
+            });
+          }
+        }
+        return Promise.reject(createBackendNotReadyError());
+      }
+
       try {
         // Get the appropriate base URL for this request
         const baseUrl = await operationRouter.getBaseUrl(originalUrl);
@@ -133,36 +163,6 @@ export function setupApiInterceptors(client: AxiosInstance): void {
         }
       } catch (error) {
         return Promise.reject(error);
-      }
-
-      // Backend readiness check (for local backend)
-      const isSaaS = await operationRouter.isSaaSMode();
-      const backendHealthy = tauriBackendService.isOnline;
-      const backendStatus = tauriBackendService.getBackendStatus();
-      const backendPort = tauriBackendService.getBackendPort();
-
-      console.debug(
-        `[apiClientSetup] Backend readiness check for ${extendedConfig.url}: isSaaS=${isSaaS}, skipCheck=${skipCheck}, skipForSaaSBackend=${skipForSaaSBackend}, backendHealthy=${backendHealthy}, backendStatus=${backendStatus}, backendPort=${backendPort}`,
-      );
-
-      if (isSaaS && !skipCheck && !skipForSaaSBackend && !backendHealthy) {
-        const method = (extendedConfig.method || "get").toLowerCase();
-        if (method !== "get") {
-          const now = Date.now();
-          if (now - lastBackendToast > BACKEND_TOAST_COOLDOWN_MS) {
-            lastBackendToast = now;
-            alert({
-              alertType: "error",
-              title: i18n.t("backendHealth.offline", "Backend Offline"),
-              body: i18n.t(
-                "backendHealth.wait",
-                "Please wait for the backend to finish launching and try again.",
-              ),
-              isPersistentPopup: false,
-            });
-          }
-        }
-        return Promise.reject(createBackendNotReadyError());
       }
 
       return extendedConfig;

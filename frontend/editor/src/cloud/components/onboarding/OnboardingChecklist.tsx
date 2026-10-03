@@ -71,7 +71,7 @@ export function OnboardingChecklist() {
       titleKey: "onboarding.checklist.takeTour.title",
       titleFallback: "Take the tour",
       descriptionKey: "onboarding.checklist.takeTour.description",
-      descriptionFallback: "See how Stirling works in a quick walkthrough",
+      descriptionFallback: "See how PDF Control works in a quick walkthrough",
       onClick: handleTakeTour,
     },
   ];
@@ -112,7 +112,7 @@ export function OnboardingChecklist() {
               className={styles.logo}
             />
             <span className={styles.title}>
-              {t("onboarding.checklist.title", "Set up Stirling PDF")}
+              {t("onboarding.checklist.title", "Set up PDF Control")}
             </span>
           </span>
           <span className={styles.headerRight}>

@@ -109,7 +109,7 @@ describe("guest signup prompt", () => {
     fireEvent.click(processor);
     expect(await screen.findByRole("dialog")).toBeInTheDocument();
     expect(
-      screen.getByText("Create an account to unlock the best of Stirling"),
+      screen.getByText("Create an account to unlock the best of PDF Control"),
     ).toBeInTheDocument();
     expect(screen.getByTestId("destination")).toHaveTextContent(
       "/editor?tool=compress",
@@ -126,7 +126,7 @@ describe("guest signup prompt", () => {
   it("opens signup instead of the assistant for guests without navigating", async () => {
     renderPrompt(false, true);
     const assistant = screen.getByRole("button", {
-      name: "Open Stirling AI assistant",
+      name: "Open PDF Control AI assistant",
     });
     fireEvent.click(assistant);
     expect(await screen.findByRole("dialog")).toBeInTheDocument();
@@ -140,7 +140,7 @@ describe("guest signup prompt", () => {
     auth.isAnonymous = false;
     renderPrompt(false, true);
     const assistant = screen.getByRole("button", {
-      name: "Open Stirling AI assistant",
+      name: "Open PDF Control AI assistant",
     });
     fireEvent.click(assistant);
     expect(assistant).toHaveAttribute("aria-expanded", "true");
@@ -214,7 +214,7 @@ describe("guest signup prompt", () => {
     });
     expect(await screen.findAllByRole("dialog")).toHaveLength(1);
     expect(
-      screen.getByText("Create an account to unlock the best of Stirling"),
+      screen.getByText("Create an account to unlock the best of PDF Control"),
     ).toBeInTheDocument();
     fireEvent.click(
       screen.getByRole("button", { name: "Create free account" }),

@@ -25,7 +25,7 @@ export function useConnectHandoff(reauth: boolean): ConnectHandoff {
 
   useEffect(() => {
     mounted.current = true;
-    // Back from Stirling can restore this page with its heap intact, leaving busy stuck on and the
+    // Back from PDF Control can restore this page with its heap intact, leaving busy stuck on and the
     // dialog pinned to the ghost step. Being shown at all means we are not mid-navigation.
     const shown = () => {
       inFlight.current = false;
@@ -101,7 +101,7 @@ export function useConnectHandoff(reauth: boolean): ConnectHandoff {
         setError(
           t(
             "portal.accountLink.modal.noAuthorizeUrl",
-            "Stirling did not return somewhere to continue. Try again in a moment.",
+            "PDF Control did not return somewhere to continue. Try again in a moment.",
           ),
         );
         setBusy(false);

@@ -5518,9 +5518,9 @@ tags = "عرض،فتح،إظهار"
 title = "قراءة"
 
 [home.redact]
-desc = "Redacts a PDF based on selected text, drawn shapes and/or selected page(s)"
+desc = "ينقّح (يطمس) ملف PDF بناءً على النص المحدد أو الأشكال المرسومة و/أو الصفحة/الصفحات المحددة"
 tags = "تنقيح،طمس،إخفاء"
-title = "Manual Redaction"
+title = "تنقيح"
 
 [home.removeAnnotations]
 desc = "يزيل جميع التعليقات/التعليقات التوضيحية من ملف PDF"
@@ -5727,8 +5727,8 @@ terms = "شروط الاستخدام"
 title = "تراخيص الطرف الثالث"
 
 [localMode]
-automationUnavailable = "سجّل الدخول إلى Stirling Cloud أو خادم مستضاف ذاتيًا لاستخدام مجلدات المعالجة وخطوط الأنابيب."
-toolUnavailable = "هذه الأداة تتطلب حسابًا. سجّل الدخول إلى Stirling Cloud أو اتصل بخادم مُستضاف ذاتيًا لاستخدامها."
+automationUnavailable = "مجلدات المعالجة وخطوط الأنابيب غير متاحة في الوضع دون اتصال."
+toolUnavailable = "هذه الأداة غير متاحة دون اتصال. قد يكون هناك اعتماد محلي مطلوب غير مثبت."
 
 [localMode.toolPicker]
 message = "سجّل الدخول لإلغاء قفل جميع الأدوات."
@@ -10719,7 +10719,7 @@ files = "الملفات"
 account = "الحساب"
 docs = "الوثائق"
 editor = "المحرر"
-home = "Stirling"
+home = "PDF Control"
 invite = "دعوة"
 landmark = "تنقل سريع"
 noProcessorAccess = "اطلب من مسؤول الوصول إلى Processor"
@@ -10745,9 +10745,9 @@ switchDocument = "تبديل المستند"
 thumbnails = "الصفحات"
 
 [redact]
-submit = "Manual Redaction"
-tags = "Redact,Hide,black out,black,marker,hidden,manual"
-title = "Manual Redaction"
+submit = "تنقيح"
+tags = "تنقيح،إخفاء،طمس،أسود،علامة،مخفي،يدوي"
+title = "تنقيح"
 
 [redact.auto]
 colorLabel = "لون الصندوق"
@@ -11322,7 +11322,7 @@ yourTeam = "فريقك"
 
 [settings.connection]
 description = "اعمل محليًا على هذا الجهاز أو اربط التطبيق بخادم Stirling."
-localDescription = "أنت تستخدم الواجهة الخلفية المحلية بدون حساب. بعض الأدوات التي تتطلب معالجة سحابية أو خادمًا مُستضافًا ذاتيًا غير متاحة."
+localDescription = "يعمل هذا التطبيق دون اتصال باستخدام الواجهة الخلفية المحلية. لا يلزم حساب أو اتصال بالإنترنت."
 logout = "تسجيل الخروج"
 server = "الخادم"
 signIn = "تسجيل الدخول"
@@ -12235,7 +12235,7 @@ all = "All"
 ariaLabel = "Super search"
 filtersAriaLabel = "Search filters"
 hint = "Type to search"
-placeholder = "Search Stirling"
+placeholder = "Search PDF Control"
 placeholderShort = "بحث"
 showLess = "Show less"
 showMore = "Show {{count}} more"
@@ -12359,8 +12359,8 @@ dismiss = "تجاهل"
 toggleDetails = "تبديل التفاصيل"
 
 [tool]
-endpointUnavailable = "هذه الأداة غير متاحة على خادمك."
-endpointUnavailableClickable = "غير متاح في هذا الوضع. انقر لتسجيل الدخول."
+endpointUnavailable = "هذه الأداة غير متاحة دون اتصال."
+endpointUnavailableClickable = "هذه الأداة غير متاحة دون اتصال."
 filesLoading = "لا تزال الملفات قيد التحميل، يرجى الانتظار."
 filesLoadingProgress = "{{loaded}} / {{total}} ملفات قيد التحميل..."
 invalidParams = "املأ الإعدادات المطلوبة."

@@ -418,9 +418,12 @@ export function ToolWorkflowProvider({ children }: ToolWorkflowProviderProps) {
       actions.setSelectedTool("read");
     } else if (startupView === "automate") {
       hasAppliedStartupView.current = true;
-      startupSelectedToolRef.current = "automate";
-      actions.setSelectedTool("automate");
-      setLeftPanelView("toolContent");
+      // Builds that omit Automate from the registry (e.g. offline desktop) stay on Tools.
+      if (toolRegistry.automate) {
+        startupSelectedToolRef.current = "automate";
+        actions.setSelectedTool("automate");
+        setLeftPanelView("toolContent");
+      }
     }
     // 'tools' is the default — no action needed
     if (startupView === "tools") {
@@ -431,6 +434,7 @@ export function ToolWorkflowProvider({ children }: ToolWorkflowProviderProps) {
     actions,
     setReaderMode,
     setLeftPanelView,
+    toolRegistry.automate,
   ]);
 
   // Tool reset methods

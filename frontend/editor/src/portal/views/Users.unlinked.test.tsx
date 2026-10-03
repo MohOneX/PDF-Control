@@ -69,7 +69,7 @@ const renderAt = (initial: string) =>
     </PortalViewProviders>,
   );
 
-describe("Users on an instance with no Stirling account", () => {
+describe("Users on an instance with no PDF Control account", () => {
   beforeEach(() => connect.mockReset());
 
   it("honours the invite deep link rather than asking for an account", () => {

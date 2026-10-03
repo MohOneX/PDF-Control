@@ -98,7 +98,7 @@ export function SystemCard({
                 ui: { ...settings.ui, appNameNavbar: e.target.value },
               })
             }
-            placeholder="Stirling PDF"
+            placeholder="PDF Control"
             disabled={!loginEnabled}
           />
         </div>

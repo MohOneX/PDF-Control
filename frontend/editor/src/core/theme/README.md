@@ -19,7 +19,7 @@ Read this before touching colours or theming anywhere in the frontend.
 | `primitives.css` | **The palette.** 41 literal colours (`--p-*`) — one neutral ramp (`--p-gray-*` light, `--p-zinc-*` dark) + status hues (blue/green/amber/red). The ONLY place literals live. |
 | `colors.css` | **Semantic tokens** (`--c-*`), mapped from primitives per theme. This is what you should reference. |
 | `dimensions.css` | Non-colour tokens: spacing, radius, z-index, type, motion. |
-| `index.css` | Barrel that `@import`s the above. Imported by `ThemeProvider` (and Storybook). |
+| `index.css` | Barrel that `@import`s fonts + the above. Imported by `ThemeProvider` (and Storybook). |
 | `mantineTheme.ts` | Mantine theme object wiring. |
 
 The old `compat.css` legacy-alias layer has been removed — every component now references `--c-*` directly. Two **legacy** colour files still exist outside this folder and are being phased out — prefer `--c-*` over their tokens, and don't add to them:
@@ -40,8 +40,8 @@ Reference these, not primitives, wherever possible:
 The **mode** and the **accent colour** are independent.
 
 - `preferences.theme` is the mode: `light` | `dark` | `system` (System follows the OS). There is no separate "custom" or "midnight" mode any more.
-- Light and dark each have their **own accent**: `preferences.lightPrimary` / `preferences.darkPrimary` (both default `#3b82f6` blue).
-- `ThemeProvider` resolves the mode to a concrete `light`/`dark` base, picks that side's accent, and **always** sets `data-app-theme="custom"` on `<html>`. So the custom-tint blocks in `colors.css` are the only themed blocks that apply — the chosen accent drives every accent **and** a subtle app-wide surface tint. With the default blue the tint is near-neutral.
+- Light and dark each have their **own accent**: `preferences.lightPrimary` / `preferences.darkPrimary` (both default to Stirling brand red).
+- `ThemeProvider` resolves the mode to a concrete `light`/`dark` base, picks that side's accent, and **always** sets `data-app-theme="custom"` on `<html>`. So the custom-tint blocks in `colors.css` are the only themed blocks that apply — the chosen accent drives every accent **and** a subtle app-wide surface tint. With `data-accent="default"` surfaces stay neutral while buttons/links use brand red.
 - Selection attributes on `<html>`: `data-theme` = `light|dark` (SUI + the tint blocks), `data-mantine-color-scheme` = `light|dark` (Mantine).
 
 ### Custom-theme contrast guardrails (`core/utils/customPrimary.ts`)

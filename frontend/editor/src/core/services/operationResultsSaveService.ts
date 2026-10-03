@@ -30,3 +30,15 @@ export async function saveOperationResults(
 
   return result;
 }
+
+/** Always prompts (or browser-downloads) — never overwrites a linked local path. */
+export async function exportOperationResults(
+  context: OperationSaveContext,
+): Promise<DownloadResult | null> {
+  if (!context.downloadUrl) return null;
+
+  return downloadFromUrl(
+    context.downloadUrl,
+    context.downloadFilename || "download",
+  );
+}

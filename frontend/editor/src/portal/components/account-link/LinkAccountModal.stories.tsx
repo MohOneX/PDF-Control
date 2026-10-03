@@ -42,7 +42,7 @@ export default meta;
 type Story = StoryObj<typeof LinkAccountModal>;
 
 /**
- * "link" mode — explains the trip to Stirling and starts the handshake. There is no
+ * "link" mode — explains the trip to PDF Control and starts the handshake. There is no
  * sign-in form: a sign-in started on a self-hosted origin cannot complete, because
  * the provider will not redirect back to a hostname it does not know.
  */

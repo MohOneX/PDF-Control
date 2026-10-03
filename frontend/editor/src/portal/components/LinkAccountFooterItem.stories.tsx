@@ -11,7 +11,7 @@ const meta: Meta<typeof LinkAccountFooterItem> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Unlinked org — the "Link Stirling account" CTA appears in the sidebar footer. */
+/** Unlinked org — the "Link PDF Control account" CTA appears in the sidebar footer. */
 export const Unlinked: Story = {
   globals: { linkState: "unlinked" },
 };

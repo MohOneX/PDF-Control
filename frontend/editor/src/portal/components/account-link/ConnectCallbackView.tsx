@@ -74,7 +74,7 @@ export function ConnectCallbackView({
           {sessionRestored
             ? t(
                 "portal.accountLink.renewal.success",
-                "Your billing access has been renewed. This server is still connected to the same Stirling account.",
+                "Your billing access has been renewed. This server is still connected to the same PDF Control account.",
               )
             : t(
                 "portal.accountLink.renewal.incomplete",
@@ -88,7 +88,7 @@ export function ConnectCallbackView({
         <p className="portal-connect__lede">
           {t(
             "portal.accountLink.connect.done.lede",
-            "This server now runs against your Stirling account.",
+            "This server now runs against your PDF Control account.",
           )}
         </p>
         {/* Link took, sign-in did not: otherwise this resurfaces later as "session expired" with
@@ -97,7 +97,7 @@ export function ConnectCallbackView({
           <p className="portal-connect-callback__note">
             {t(
               "portal.accountLink.connect.callback.linkedNotSignedIn",
-              "You are not signed in to Stirling in this browser, so usage and billing will ask you to sign in.",
+              "You are not signed in to PDF Control in this browser, so usage and billing will ask you to sign in.",
             )}
           </p>
         )}
@@ -118,7 +118,7 @@ export function ConnectCallbackView({
         <p className="portal-connect-callback__note">
           {t(
             "portal.accountLink.connect.callback.signedInAnyway",
-            "You are signed in to Stirling, so billing and usage will load. Only the server link is incomplete.",
+            "You are signed in to PDF Control, so billing and usage will load. Only the server link is incomplete.",
           )}
         </p>
       ) : null}
@@ -145,7 +145,7 @@ function failure(state: ConnectCallbackState, t: Translate, reauth: boolean) {
       ),
       retry: t(
         "portal.accountLink.renewal.retry",
-        "Stirling could not finish renewing billing access. Try again in a moment; your server is still connected.",
+        "PDF Control could not finish renewing billing access. Try again in a moment; your server is still connected.",
       ),
     };
     return {
@@ -221,7 +221,7 @@ function failure(state: ConnectCallbackState, t: Translate, reauth: boolean) {
         ),
         body: t(
           "portal.accountLink.connect.callback.unfinished.body",
-          "Stirling did not confirm the connection. This is usually temporary.",
+          "PDF Control did not confirm the connection. This is usually temporary.",
         ),
       };
   }

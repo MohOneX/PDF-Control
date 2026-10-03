@@ -40,7 +40,7 @@ export function ExhaustedAccountLinkContent({
       <p className="portal-connect__lede">
         {t(
           "portal.accountLink.connect.exhaustedLede",
-          "This server has used its free credits for the month. Link a new or existing Stirling account to access your team’s monthly allowance.",
+          "This server has used its free credits for the month. Link a new or existing PDF Control account to access your team’s monthly allowance.",
         )}
       </p>
       {summary}
@@ -109,7 +109,7 @@ export function ExhaustedAccountLinkModal({
       );
   const adminMessage = t(
     "portal.accountLink.connect.adminRequired",
-    "Ask your server administrator to open Usage & billing and link a Stirling account for more monthly credits. Manual PDF tools are still available.",
+    "Ask your server administrator to open Usage & billing and link a PDF Control account for more monthly credits. Manual PDF tools are still available.",
   );
   return (
     <FlowModal

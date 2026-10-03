@@ -63,7 +63,6 @@ import {
 import { useFolders } from "@app/contexts/FolderContext";
 import { useNewFolderFlow } from "@app/hooks/useNewFolderFlow";
 import { NewFolderButton } from "@app/components/filesPage/NewFolderButton";
-import MobileUploadModal from "@app/components/shared/MobileUploadModal";
 import { useLibraryRefresh } from "@app/hooks/useLibraryRefresh";
 import { useAuth } from "@app/auth/UseSession";
 import { canPickDirectory } from "@app/services/directoryPicker";
@@ -328,7 +327,7 @@ export default function HomePage() {
     )?.hideToolPanel ??
       false);
 
-  const brandAltText = t("home.mobile.brandAlt", "Stirling PDF logo");
+  const brandAltText = t("home.mobile.brandAlt", "PDF Control logo");
 
   const quickNavToolReasons = useMemo(() => {
     const reasons: QuickNavToolReasons = {};
@@ -504,7 +503,7 @@ export default function HomePage() {
   // all share the one `convert` tool, so prefer a per-URL SEO override when the
   // path has one - this keeps the hydrated title/description matching the
   // keyword-targeted copy that crawlers see in the prerendered HTML.
-  const appName = config?.appNameNavbar || "Stirling PDF";
+  const appName = config?.appNameNavbar || "PDF Control";
   // The override copy is English-only (it mirrors the prerendered HTML), so
   // every other locale keeps its translated tool name and description.
   const isEnglish = (i18n.resolvedLanguage || i18n.language || "").startsWith(
@@ -674,25 +673,26 @@ export default function HomePage() {
                   {t("quickAccess.allTools", "Tools")}
                 </span>
               </Button>
-              {toolAvailability["automate"]?.available !== false && (
-                <Button
-                  variant="tertiary"
-                  className="mobile-bottom-button"
-                  aria-label={t("quickAccess.automate", "Automate")}
-                  onClick={() => {
-                    leaveMyFiles();
-                    handleToolSelect("automate");
-                    if (isMobile) {
-                      setActiveMobileView("tools");
-                    }
-                  }}
-                >
-                  <Icon name="waypoints" size="1.5rem" />
-                  <span className="mobile-bottom-button-label">
-                    {t("quickAccess.automate", "Automate")}
-                  </span>
-                </Button>
-              )}
+              {toolRegistry["automate"] &&
+                toolAvailability["automate"]?.available !== false && (
+                  <Button
+                    variant="tertiary"
+                    className="mobile-bottom-button"
+                    aria-label={t("quickAccess.automate", "Automate")}
+                    onClick={() => {
+                      leaveMyFiles();
+                      handleToolSelect("automate");
+                      if (isMobile) {
+                        setActiveMobileView("tools");
+                      }
+                    }}
+                  >
+                    <Icon name="waypoints" size="1.5rem" />
+                    <span className="mobile-bottom-button-label">
+                      {t("quickAccess.automate", "Automate")}
+                    </span>
+                  </Button>
+                )}
               <Button
                 variant="tertiary"
                 className="mobile-bottom-button"
@@ -784,83 +784,54 @@ const MyFilesSidebarOverrides = forwardRef<HTMLDivElement, FileSidebarProps>(
     } = useNewFolderFlow();
     const { refreshing, refresh: refreshLibrary } = useLibraryRefresh();
     const { isAnonymous } = useAuth();
-    const { config: appConfig } = useAppConfig();
-    const [mobileUploadOpen, setMobileUploadOpen] = useState(false);
-    const isMobileViewport = useIsMobile();
-    // The scanner sends files from a phone to this screen, so it is a desktop
-    // affordance: on a phone you are already where the files are.
-    const mobileUploadAvailable =
-      Boolean(appConfig?.enableMobileScanner) && !isMobileViewport;
     const signInRequired = isAnonymous
       ? t("filesPage.signInRequired", "Sign in to use cloud storage.")
       : null;
 
     return (
-      <>
-        <FileSidebar
-          ref={ref}
-          {...props}
-          onUploadFiles={handleUpload}
-          onPickGoogleDriveFiles={handleUpload}
-          extraActions={[
-            {
-              icon: <Icon name="folder-plus" />,
-              label: t("filesPage.newFolder", "New folder"),
-              onClick: createFolderHere,
-              disabled: newFolderDisabledReason !== null,
-              disabledTooltip: newFolderDisabledReason ?? undefined,
-              testId: "files-rail-new-folder",
-              // Share folder availability rules with the library toolbar.
-              render: () => (
-                <NewFolderButton
-                  trigger="row"
-                  testId="files-rail-new-folder"
-                  label={t("filesPage.newFolder", "New folder")}
-                  disabledReason={newFolderDisabledReason}
-                  serverDisabledReason={serverFolderBlock ?? undefined}
-                  currentFolderId={folders.currentFolderId}
-                  canAddLocalFolder={canPickDirectory}
-                  onAddLocalFolder={() => void addLocalFolder()}
-                  onOpenDialog={filesPage.openNewFolderDialog}
-                />
-              ),
-            },
-            {
-              icon: (
-                <Icon
-                  name="refresh-cw"
-                  className={refreshing ? "file-sidebar-spin" : undefined}
-                />
-              ),
-              label: t("filesPage.refresh", "Refresh"),
-              onClick: () => void refreshLibrary(),
-              disabled: refreshing || signInRequired !== null,
-              disabledTooltip: signInRequired ?? undefined,
-              testId: "files-rail-refresh",
-            },
-            ...(mobileUploadAvailable
-              ? [
-                  {
-                    icon: <Icon name="qr-code" />,
-                    label: t(
-                      "filesPage.uploadFromMobile",
-                      "Upload from Mobile",
-                    ),
-                    onClick: () => setMobileUploadOpen(true),
-                    testId: "files-rail-mobile-upload",
-                  },
-                ]
-              : []),
-          ]}
-        />
-        <MobileUploadModal
-          opened={mobileUploadOpen}
-          onClose={() => setMobileUploadOpen(false)}
-          onFilesReceived={(files) => {
-            if (files.length > 0) void handleUpload(files);
-          }}
-        />
-      </>
+      <FileSidebar
+        ref={ref}
+        {...props}
+        onUploadFiles={handleUpload}
+        onPickGoogleDriveFiles={handleUpload}
+        extraActions={[
+          {
+            icon: <Icon name="folder-plus" />,
+            label: t("filesPage.newFolder", "New folder"),
+            onClick: createFolderHere,
+            disabled: newFolderDisabledReason !== null,
+            disabledTooltip: newFolderDisabledReason ?? undefined,
+            testId: "files-rail-new-folder",
+            // Share folder availability rules with the library toolbar.
+            render: () => (
+              <NewFolderButton
+                trigger="row"
+                testId="files-rail-new-folder"
+                label={t("filesPage.newFolder", "New folder")}
+                disabledReason={newFolderDisabledReason}
+                serverDisabledReason={serverFolderBlock ?? undefined}
+                currentFolderId={folders.currentFolderId}
+                canAddLocalFolder={canPickDirectory}
+                onAddLocalFolder={() => void addLocalFolder()}
+                onOpenDialog={filesPage.openNewFolderDialog}
+              />
+            ),
+          },
+          {
+            icon: (
+              <Icon
+                name="refresh-cw"
+                className={refreshing ? "file-sidebar-spin" : undefined}
+              />
+            ),
+            label: t("filesPage.refresh", "Refresh"),
+            onClick: () => void refreshLibrary(),
+            disabled: refreshing || signInRequired !== null,
+            disabledTooltip: signInRequired ?? undefined,
+            testId: "files-rail-refresh",
+          },
+        ]}
+      />
     );
   },
 );

@@ -1125,7 +1125,7 @@ function FileActionsMenu({
                   : undefined
               }
             >
-              {t("filesPage.addToLibrary", "Add to Stirling library…")}
+              {t("filesPage.addToLibrary", "Add to PDF Control library…")}
             </Menu.Item>
           </Tooltip>
         )}

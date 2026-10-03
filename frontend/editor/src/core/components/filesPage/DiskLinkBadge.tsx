@@ -16,7 +16,7 @@ interface DiskLinkBadgeProps {
 const unavailableHint = {
   permission: [
     "filesPage.diskLink.unavailableHintPermission",
-    "Stirling is not allowed to read this location. Grant access in System Settings to pick up changes again.",
+    "PDF Control is not allowed to read this location. Grant access in System Settings to pick up changes again.",
   ],
   offline: [
     "filesPage.diskLink.unavailableHintOffline",

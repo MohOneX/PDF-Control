@@ -41,7 +41,7 @@ it.each(["https://cloud.example/app", "https://cloud.example/app/"])(
     show();
     expect(openExternal).not.toHaveBeenCalled();
     expect(
-      screen.getByText(/Sign in with the same Stirling account/),
+      screen.getByText(/Sign in with the same PDF Control account/),
     ).toBeVisible();
     fireEvent.click(
       screen.getByRole("button", { name: "Open Usage & Billing in browser" }),

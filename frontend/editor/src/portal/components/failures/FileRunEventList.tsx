@@ -180,7 +180,7 @@ export function FileRunEventList() {
             header: t("portal.failures.columns.closedBy", "Closed by"),
             sortable: true,
             get: (event) => event.statusActor,
-            placeholder: t("portal.failures.closedBySystem", "Stirling"),
+            placeholder: t("portal.failures.closedBySystem", "PDF Control"),
           }),
         ]
       : []),

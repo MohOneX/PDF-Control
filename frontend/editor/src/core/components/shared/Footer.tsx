@@ -68,6 +68,9 @@ export default function Footer({
           fontSize: "0.75rem",
         }}
       >
+        <span className="footer-link px-3" style={{ opacity: 0.85 }}>
+          {t("brand.developedBy", "Developed By MohOneX")}
+        </span>
         <a
           className="footer-link px-3"
           target="_blank"

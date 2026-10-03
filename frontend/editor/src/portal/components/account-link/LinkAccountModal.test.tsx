@@ -91,7 +91,7 @@ vi.mock("@app/constants/app", async (importOriginal) => ({
 
 const BENEFITS = "Add more users with a paid Team plan";
 const GHOST = /Opening Stirling sign-in/;
-const CONNECT = /Connect Stirling account/;
+const CONNECT = /Connect PDF Control account/;
 
 function renderModal(
   mode?: LinkModalMode,
@@ -519,7 +519,7 @@ describe("LinkAccountModal", () => {
       renderModal("exhausted", { state: "linked", sessionRestored: true });
 
       expect(
-        await screen.findByText(/now runs against your Stirling account/),
+        await screen.findByText(/now runs against your PDF Control account/),
       ).toBeTruthy();
       expect(filledSteps()).toBe(3);
       expect(startReauth).not.toHaveBeenCalled();
@@ -552,7 +552,7 @@ describe("LinkAccountModal", () => {
       renderModal("link", { state: "linked", sessionRestored: true });
 
       expect(
-        await screen.findByText(/now runs against your Stirling account/),
+        await screen.findByText(/now runs against your PDF Control account/),
       ).toBeTruthy();
       expect(screen.queryByText(BENEFITS)).toBeNull();
       // Left on 2 of 3, arrived on 3: the whole reason the bar spans the redirect.

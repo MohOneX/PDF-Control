@@ -1,11 +1,66 @@
-/* ============================================================
-   Landing Page styles.
-   All custom properties are defined in theme.css.
-   ============================================================ */
+/* Landing empty state — atmospheric hero for the workbench with no files. */
 
-/* ── Entrance animation (editor empty state) ─────────────────
-   Logo fades/slides up first (0.2s), then the actions after it finishes
-   (0.2s delay + 0.2s) — 0.4s total. */
+.landing-shell {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background-color: var(--c-bg);
+}
+
+/* Soft brand wash behind the hero; stays under content via z-index. */
+.landing-atmosphere {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(
+      ellipse 90% 55% at 50% -5%,
+      color-mix(in srgb, var(--c-primary) 16%, transparent),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 0% 100%,
+      color-mix(in srgb, var(--c-brand) 10%, transparent),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 100% 85%,
+      color-mix(in srgb, var(--c-primary) 8%, transparent),
+      transparent 60%
+    );
+}
+
+.landing-dropzone {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  cursor: default;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  padding: var(--space-6) var(--space-4);
+}
+
+.landing-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
 @keyframes landing-fade-up {
   from {
     opacity: 0;
@@ -16,40 +71,198 @@
     transform: translateY(0);
   }
 }
-.landing-logo-enter {
-  animation: landing-fade-up 0.2s ease-out both;
-}
-.landing-actions-enter {
-  animation: landing-fade-up 0.2s ease-out 0.2s both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .landing-logo-enter,
-  .landing-actions-enter {
-    animation: none;
+
+@keyframes landing-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.4rem);
   }
 }
 
-/* ── Hero text ───────────────────────────────────────────── */
-.landing-title {
-  margin: 1.75rem 0 1.5rem;
+.landing-enter {
+  animation: landing-fade-up 0.35s ease-out both;
+}
+.landing-enter--1 {
+  animation-delay: 0s;
+}
+.landing-enter--2 {
+  animation-delay: 0.08s;
+}
+.landing-enter--3 {
+  animation-delay: 0.16s;
+}
+.landing-enter--4 {
+  animation-delay: 0.24s;
+}
+.landing-enter--5 {
+  animation-delay: 0.32s;
+}
+
+.landing-developed-by {
+  margin: 0.35rem 0 0;
+  width: 100%;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
   text-align: center;
-  font-size: 2rem;
+  color: var(--c-text-muted);
+}
+
+/* Keep the mark + wordmark as one centered lockup (SVGs can have optical bias). */
+.landing-hero .sui-logo {
+  margin-inline: auto;
+}
+
+.landing-hero .sui-logo__mark,
+.landing-hero .sui-logo__wordmark {
+  display: block;
+  margin-inline: auto;
+}
+
+.landing-visual {
+  margin: 1.75rem 0 0.25rem;
+}
+
+.landing-visual .landing-stack {
+  animation: landing-float 5.5s ease-in-out 0.6s infinite;
+}
+
+.landing-title {
+  margin: 1.5rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.6vw, 2.5rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--c-text);
 }
 
 .landing-subtitle {
-  margin: 0;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-size: 0.9375rem;
-  line-height: 1.5;
+  margin: 0.65rem 0 0;
   max-width: 28rem;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   color: var(--c-text-muted);
 }
 
-/* ── Document stack ──────────────────────────────────────── */
+.landing-cta {
+  margin-top: 1.5rem;
+}
+
+.landing-starters {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-starters-label {
+  margin: 0 0 0.75rem;
+  width: 100%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--c-text-subtle);
+}
+
+.landing-starters-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.landing-starter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  width: 6.25rem;
+  min-width: 6.25rem;
+  padding: var(--space-3) var(--space-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--c-surface) 88%, transparent);
+  color: var(--c-text);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast),
+    border-color var(--motion-fast),
+    transform var(--motion-fast);
+}
+
+.landing-starter:hover {
+  background: var(--c-surface);
+  border-color: color-mix(in srgb, var(--c-primary) 35%, var(--c-border));
+  transform: translateY(-1px);
+}
+
+.landing-starter:focus-visible {
+  outline: 0.125rem solid var(--c-primary);
+  outline-offset: 0.125rem;
+}
+
+.landing-starter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-inline: auto;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--c-primary) 12%, var(--c-surface));
+  color: var(--c-accent-fg, var(--c-primary));
+}
+
+.landing-starter-icon svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.landing-starter-name {
+  display: block;
+  width: 100%;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 36rem) {
+  .landing-starter {
+    width: calc(50% - var(--space-2) / 2);
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-enter,
+  .landing-visual .landing-stack {
+    animation: none;
+  }
+  .landing-starter {
+    transition: none;
+  }
+  .landing-starter:hover {
+    transform: none;
+  }
+}
+
+/* Document stack illustration */
 .landing-stack {
   position: relative;
   z-index: 1;
@@ -63,11 +276,11 @@
   overflow: visible;
 }
 
-/* Sheets — static white, never change with theme */
+/* Paper stays white so the illustration reads as a document in both themes. */
 .landing-sheet {
   position: absolute;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: var(--p-white);
   cursor: default;
 }
 
@@ -117,6 +330,15 @@
   height: 10px;
   border-radius: 9999px;
 }
+.landing-sheet-dot--1 {
+  background-color: color-mix(in srgb, var(--p-white) 35%, transparent);
+}
+.landing-sheet-dot--2 {
+  background-color: color-mix(in srgb, var(--p-white) 25%, transparent);
+}
+.landing-sheet-dot--3 {
+  background-color: color-mix(in srgb, var(--p-white) 15%, transparent);
+}
 
 .landing-sheet-body {
   padding: 10px 12px;
@@ -126,7 +348,6 @@
   padding: 12px;
 }
 
-/* Bars — static light colours, never change with theme */
 .landing-bar {
   border-radius: 9999px;
   background-color: var(--c-illustration-line);
@@ -135,14 +356,11 @@
   background-color: var(--c-illustration-line-strong);
 }
 
-/* Dropzone accept/reject outlines. Mantine 8 no longer supports nested
- * `&[data-accept]` selectors inside the `styles` prop object, so these are
- * plain CSS attribute selectors on a class applied to the Dropzone root. */
 .landing-dropzone[data-accept] {
   outline: 2px dashed var(--c-primary);
   outline-offset: 4px;
 }
 .landing-dropzone[data-reject] {
-  outline: 2px dashed var(--mantine-color-red-6);
+  outline: 2px dashed var(--c-danger);
   outline-offset: 4px;
 }

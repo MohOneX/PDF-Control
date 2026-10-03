@@ -49,7 +49,7 @@ export interface AiEngineSettingsData {
   enabled?: boolean;
   mode?: AiEngineMode;
   /**
-   * Cloud mode only. Whether Stirling Cloud may keep a document's text indexed for later
+   * Cloud mode only. Whether PDF Control Cloud may keep a document's text indexed for later
    * questions. Retention, not transmission: every AI tool sends page text either way.
    */
   cloudDocumentIndexing?: boolean;

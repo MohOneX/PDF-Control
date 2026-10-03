@@ -171,11 +171,11 @@ export function ConnectApproveView({
           : pending?.canApprove
             ? t(
                 "connect.confirm.lead",
-                "A Stirling server is asking to connect to your team. Check the address below is yours before you approve.",
+                "A PDF Control server is asking to connect to your team. Check the address below is yours before you approve.",
               )
             : t(
                 "connect.confirm.cannotDecide",
-                "Only a team owner can approve or decline this connection. Use a different account or dismiss this prompt to continue using Stirling.",
+                "Only a team owner can approve or decline this connection. Use a different account or dismiss this prompt to continue using PDF Control.",
               )}
       </p>
 

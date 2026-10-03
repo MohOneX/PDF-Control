@@ -132,7 +132,14 @@ pub fn run() {
     .plugin(tauri_plugin_updater::Builder::new().build())
     .plugin(
       tauri_plugin_window_state::Builder::default()
-        .with_state_flags(StateFlags::all() & !StateFlags::DECORATIONS)
+        // Frameless Windows + restored MAXIMIZED looks like true fullscreen and
+        // confuses first launch; keep size/position only.
+        .with_state_flags(
+          StateFlags::all()
+            & !StateFlags::DECORATIONS
+            & !StateFlags::MAXIMIZED
+            & !StateFlags::POSITION,
+        )
         .build()
     )
     .manage(AppConnectionState::default())

@@ -61,7 +61,7 @@ it("suspends procurement while connecting and returns to its next action on dism
   );
   await waitFor(() => expect(screen.getAllByRole("dialog")).toHaveLength(1));
   expect(
-    screen.getByRole("dialog", { name: "Connect your Stirling account" }),
+    screen.getByRole("dialog", { name: "Connect your PDF Control account" }),
   ).toBeVisible();
   fireEvent.click(screen.getByRole("button", { name: "Not now" }));
   await waitFor(() => expect(screen.getAllByRole("dialog")).toHaveLength(1));

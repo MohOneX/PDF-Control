@@ -423,7 +423,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   const activeFileStubsRef = useRef(activeFileStubs);
   activeFileStubsRef.current = activeFileStubs;
 
-  // Download a File from the Stirling files endpoint.
+  // Download a File from the PDF Control files endpoint.
   const downloadFile = useCallback(
     async (descriptor: AiWorkflowResultFile): Promise<File> => {
       // AI result files live on the backend that ran the workflow (the connected

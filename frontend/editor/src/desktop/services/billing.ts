@@ -44,6 +44,15 @@ async function requireToken(): Promise<string> {
   return token;
 }
 
+function requireSupabase() {
+  if (!supabase) {
+    throw new Error(
+      "SaaS billing is not configured (missing VITE_SAAS_SERVER_URL / VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY)",
+    );
+  }
+  return supabase;
+}
+
 /**
  * Create a Stripe Checkout Session for the PAYG subscription via the
  * {@code create-checkout-session} edge function (see StripeCheckoutPanel),
@@ -55,8 +64,9 @@ export async function createCheckoutSession(
   params: CheckoutParams,
 ): Promise<CheckoutSession> {
   const token = await requireToken();
+  const client = requireSupabase();
 
-  const { data, error } = await supabase.functions.invoke<{
+  const { data, error } = await client.functions.invoke<{
     client_secret?: string;
     url?: string;
     mock?: boolean;
@@ -98,8 +108,9 @@ export async function createPortalSession(
   params: PortalParams,
 ): Promise<PortalSession> {
   const token = await requireToken();
+  const client = requireSupabase();
 
-  const { data, error } = await supabase.functions.invoke<{
+  const { data, error } = await client.functions.invoke<{
     url?: string;
     error?: string;
   }>("create-customer-portal-session", {

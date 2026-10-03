@@ -25,7 +25,7 @@ export function SaasSessionBanner() {
     >
       {t(
         "portal.usage.sessionExpired.body",
-        "Your Stirling account session has expired. Sign in again to view billing — your instance stays linked.",
+        "Your PDF Control account session has expired. Sign in again to view billing — your instance stays linked.",
       )}
     </Banner>
   );

@@ -39,7 +39,7 @@ export class OperationRouter {
       throw new Error(
         i18n.t(
           "localMode.automationUnavailable",
-          "Sign in to Stirling Cloud or a self-hosted server to use processing folders and pipelines.",
+          "Processing folders and pipelines are not available in offline mode.",
         ),
       );
     }
@@ -176,7 +176,8 @@ export class OperationRouter {
     }
     const mode = await connectionModeService.getCurrentMode();
 
-    // Local-only mode: route everything to local backend; open settings if tool unavailable
+    // Local-only mode: route everything to the bundled backend.
+    // Tools the local backend cannot run stay unavailable — no sign-in redirect.
     if (mode === "local") {
       if (operation && this.isToolEndpoint(operation)) {
         const endpointName = this.extractEndpointName(operation);
@@ -188,16 +189,10 @@ export class OperationRouter {
               backendUrl,
             );
           if (!supportedLocally) {
-            // Open the connection settings so the user can sign in
-            window.dispatchEvent(
-              new CustomEvent("appConfig:navigate", {
-                detail: { key: "connectionMode" },
-              }),
-            );
             throw new Error(
               i18n.t(
                 "localMode.toolUnavailable",
-                "This tool requires an account. Sign in to Stirling Cloud or connect to a self-hosted server to use it.",
+                "This tool is not available offline. A required local dependency may be missing.",
               ),
             );
           }
@@ -313,7 +308,7 @@ export class OperationRouter {
         throw new Error(
           i18n.t(
             "selfHosted.offline.toolNotAvailableLocally",
-            'Your Stirling-PDF server is offline and "{{endpoint}}" is not available on the local backend.',
+            'Your PDF Control server is offline and "{{endpoint}}" is not available on the local backend.',
             { endpoint: endpointName },
           ),
         );

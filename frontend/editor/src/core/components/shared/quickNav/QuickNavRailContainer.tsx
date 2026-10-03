@@ -2,13 +2,13 @@ import { useTranslation } from "react-i18next";
 import { NavSurface } from "@app/ui/NavSurface";
 import { Icon } from "@app/ui/Icon";
 import { QuickNavBrand } from "@app/components/shared/quickNav/QuickNavBrand";
-import type { QuickNavIdentity } from "@app/contexts/QuickNavHostContext";
 import {
   QuickNavRailBase,
   RailButton,
   type QuickNavRailBaseProps,
 } from "@app/components/shared/quickNav/QuickNavRailBase";
 import { QuickNavRailAccount } from "@app/components/shared/quickNav/QuickNavRailAccount";
+import { QuickNavRailContact } from "@app/components/shared/quickNav/QuickNavRailContact";
 import { QuickNavRailNotifications } from "@app/components/shared/quickNav/QuickNavRailNotifications";
 import { QuickNavRailFooterExtensions } from "@app/components/shared/quickNav/QuickNavRailFooterExtensions";
 import "@app/components/shared/quickNav/QuickNavRailContainer.css";
@@ -22,9 +22,9 @@ export interface QuickNavRailContainerProps extends Omit<
   QuickNavRailBaseProps,
   "footer"
 > {
-  /** The rail owns the account control, so the sidebars drop their own row. */
+  /** Opens settings from the rail footer. */
   onOpenAccount?: () => void;
-  /** Marks the avatar current for the whole settings page, which it now owns. */
+  /** Marks the settings control current while the settings page is open. */
   accountActive?: boolean;
   /** Omitted in builds with no docs to browse. */
   onOpenDocs?: () => void;
@@ -33,7 +33,6 @@ export interface QuickNavRailContainerProps extends Omit<
   onInvite?: () => void;
   onToggleNotifications?: () => void;
   notificationsOpen?: boolean;
-  identity?: QuickNavIdentity | null;
   onReturnHome: () => void;
 }
 
@@ -46,7 +45,6 @@ export function QuickNavRailContainer({
   onInvite,
   onToggleNotifications,
   notificationsOpen,
-  identity = null,
   onReturnHome,
   ...railProps
 }: QuickNavRailContainerProps) {
@@ -83,10 +81,10 @@ export function QuickNavRailContainer({
                   onClick={onOpenDocs}
                 />
               )}
+              <QuickNavRailContact />
               {onOpenAccount && (
                 <QuickNavRailAccount
                   onOpen={onOpenAccount}
-                  identity={identity}
                   active={accountActive}
                 />
               )}

@@ -169,7 +169,7 @@ export const Typography: Story = {
         </div>
         <span
           style={{
-            fontFamily: "var(--font-brand)",
+            fontFamily: "var(--font-display)",
             fontSize: 32,
             fontWeight: 700,
           }}
@@ -185,9 +185,31 @@ export const Typography: Story = {
             marginBottom: 4,
           }}
         >
+          Body (Source Sans 3)
+        </div>
+        <span style={{ fontFamily: "var(--font-sans)", fontSize: 16 }}>
+          Merge, compress, and sign PDFs
+        </span>
+      </div>
+      <div>
+        <div
+          style={{
+            fontSize: 11,
+            color: "var(--c-text-subtle)",
+            marginBottom: 4,
+          }}
+        >
           Page title (24/700)
         </div>
-        <span style={{ fontSize: 24, fontWeight: 700 }}>Pipelines</span>
+        <span
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: 24,
+            fontWeight: 700,
+          }}
+        >
+          Pipelines
+        </span>
       </div>
       <div>
         <div

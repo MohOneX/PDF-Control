@@ -214,18 +214,18 @@ export default function AdminAiSection() {
   }
 
   const card = { settings, setSettings, isFieldPending, loginEnabled };
-  // Stirling Cloud picks the models and holds the provider keys, so these sections describe an
+  // PDF Control Cloud picks the models and holds the provider keys, so these sections describe an
   // engine this server no longer talks to. Shown but inert, rather than hidden, so an admin can
   // still see what their own engine is set to before switching back.
   const cloudManaged = settings.enabled === true && settings.mode === "CLOUD";
   const managedNote = t(
     "admin.settings.ai.managedByCloud",
-    "Managed by Stirling Cloud in this mode.",
+    "Managed by PDF Control Cloud in this mode.",
   );
   // The badge slot sits in the card heading, so it takes a chip rather than a sentence.
   const managedBadge = cloudManaged ? (
     <StatusBadge tone="neutral" size="sm" showDot={false}>
-      {t("admin.settings.ai.managedByCloudShort", "Managed by Stirling Cloud")}
+      {t("admin.settings.ai.managedByCloudShort", "Managed by PDF Control Cloud")}
     </StatusBadge>
   ) : undefined;
 

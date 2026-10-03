@@ -74,7 +74,7 @@ function localWallet(balance: FreeTierBalance, seats: Seats | null): Wallet {
 }
 
 /**
- * Usage and billing for an instance with no Stirling account: the same screen a linked team sees,
+ * Usage and billing for an instance with no PDF Control account: the same screen a linked team sees,
  * fed from the local ledger, with connecting offered as the way to get more.
  *
  * <p>Reads local endpoints only. Loading a wallet here would assert a linkage the browser's SaaS
@@ -159,7 +159,7 @@ export function FreeTierPlanView({
             tone="info"
             title={t(
               "portal.usage.freeTier.connectTitle",
-              "This server has no Stirling account",
+              "This server has no PDF Control account",
             )}
             action={
               isAdmin ? (
@@ -171,7 +171,7 @@ export function FreeTierPlanView({
                       )
                     : t(
                         "portal.usage.freeTier.connect",
-                        "Connect a Stirling account",
+                        "Connect a PDF Control account",
                       )}
                 </Button>
               ) : undefined

@@ -45,7 +45,7 @@ describe("account-link ownership", () => {
       const action = screen.getByRole("button", {
         name: linked
           ? "Disconnect this instance"
-          : "Connect your Stirling account",
+          : "Connect your PDF Control account",
       });
       expect(action).toBeDisabled();
       fireEvent.click(action);
@@ -70,7 +70,7 @@ describe("account-link ownership", () => {
         screen.getByRole("button", {
           name: linked
             ? "Disconnect this instance"
-            : "Connect your Stirling account",
+            : "Connect your PDF Control account",
         }),
       );
       if (linked) {

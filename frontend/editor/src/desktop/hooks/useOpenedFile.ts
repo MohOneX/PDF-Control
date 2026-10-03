@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { isTauri } from "@tauri-apps/api/core";
 import { fileOpenService } from "@app/services/fileOpenService";
 import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
 
@@ -43,11 +44,15 @@ export function useOpenedFile() {
     };
 
     // Read files on mount
-    readFilesFromStorage();
+    void readFilesFromStorage();
 
     // Listen for files-changed events scoped to THIS window only.
     // Rust emits via window.emit(...) / app.emit_to(label, ...) so each
     // Tauri window sees only its own queue updates.
+    if (!isTauri()) {
+      return;
+    }
+
     let unlisten: (() => void) | undefined;
     const currentWindow = getCurrentWebviewWindow();
     currentWindow

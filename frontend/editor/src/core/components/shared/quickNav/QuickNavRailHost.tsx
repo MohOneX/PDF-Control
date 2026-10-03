@@ -24,8 +24,6 @@ import { Icon } from "@app/ui/Icon";
 const SIZE = "1.125rem";
 
 /** Entries come from the URL, not either app's context, so the rail survives a switch. */
-/** Interpolated, not inlined: a literal "#acc…" reads as a hex colour to theme-lint. */
-const ACCOUNT_ANCHOR = "account";
 
 export function QuickNavRailHost() {
   const { t } = useTranslation();
@@ -34,7 +32,7 @@ export function QuickNavRailHost() {
   const host = useQuickNavHost();
   // Processing folders run on the non-core API server. True on web (served by that backend);
   // on desktop it tracks the signed-in connection, so the entry falls inert until the user
-  // signs in to Stirling Cloud or a self-hosted server.
+  // signs in to PDF Control Cloud or a self-hosted server.
   const connectedServer = useConnectedServer();
 
   const appMounted = Boolean(host?.appMounted);
@@ -230,11 +228,10 @@ export function QuickNavRailHost() {
   // question mark rather than competing with the apps for the top.
   const openDocs = HAS_DOCS ? () => go(DOCS_PATH) : undefined;
 
-  // The avatar is the only way into settings now, so it lands on the account
-  // section and the page's own nav carries the rest. Inside settings it is a
-  // tab switch (replace); from an app it is a navigation.
+  // Settings opens from the rail footer. Inside settings it is a tab switch
+  // (replace); from an app it is a navigation.
   const openAccount = () => {
-    const target = `/settings/general#${ACCOUNT_ANCHOR}`;
+    const target = "/settings/general";
     if (inSettings) {
       navigate(target, { replace: true });
       return;
@@ -250,9 +247,8 @@ export function QuickNavRailHost() {
     <QuickNavRailContainer
       groups={[surfaces, within]}
       onReturnHome={returnHome}
-      identity={host?.identity ?? null}
       onOpenAccount={openAccount}
-      // The avatar stands for the whole page, not just its own section.
+      // The control stands for the whole settings page.
       accountActive={inSettings}
       onOpenDocs={openDocs}
       docsActive={inDocs}

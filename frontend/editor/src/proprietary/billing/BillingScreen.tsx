@@ -614,7 +614,7 @@ export function BillingScreen({
               <div className="billing-ent__title">
                 {t(
                   "portal.billing.enterprise.title",
-                  "Running Stirling in a regulated environment?",
+                  "Running PDF Control in a regulated environment?",
                 )}
               </div>
               <div className="billing-ent__sub">

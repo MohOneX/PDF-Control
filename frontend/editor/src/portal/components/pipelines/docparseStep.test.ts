@@ -19,7 +19,7 @@ describe("vector database destinations", () => {
     expect(ingestStepConfigured(corpus, false)).toBe(true);
     expect(ingestStepConfigured(step, true)).toBe(true);
   });
-  it("adds preparation without indexing into Stirling by default", () => {
+  it("adds preparation without indexing into PDF Control by default", () => {
     const steps = prepareVectorDestination([]);
     expect(vectorDestinationConfigured(steps)).toBe(true);
     expect(steps[0].params).toMatchObject({

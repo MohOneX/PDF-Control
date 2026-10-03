@@ -161,7 +161,7 @@ describe("Self-hosted account connection", () => {
     expect(screen.queryByText("Old server")).not.toBeInTheDocument();
     expect(screen.queryByText(/Removed connections/)).not.toBeInTheDocument();
     expect(
-      screen.getByText("Signed in to Stirling Cloud as"),
+      screen.getByText("Signed in to PDF Control Cloud as"),
     ).toBeInTheDocument();
     expect(screen.getByText("owner@example.com")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Remove connection" }));
@@ -186,7 +186,7 @@ describe("Self-hosted account connection", () => {
       mount();
     });
     fireEvent.click(
-      screen.getByRole("button", { name: "Connect your Stirling account" }),
+      screen.getByRole("button", { name: "Connect your PDF Control account" }),
     );
     expect(state.openLinkModal).toHaveBeenCalledOnce();
     expect(state.fetchInstances).not.toHaveBeenCalled();
@@ -281,7 +281,7 @@ describe("Self-hosted account connection", () => {
     fireEvent.click(screen.getByRole("button", { name: "Try again" }));
     expect(state.refresh).toHaveBeenCalledOnce();
     expect(
-      screen.queryByRole("button", { name: "Connect your Stirling account" }),
+      screen.queryByRole("button", { name: "Connect your PDF Control account" }),
     ).not.toBeInTheDocument();
   });
 

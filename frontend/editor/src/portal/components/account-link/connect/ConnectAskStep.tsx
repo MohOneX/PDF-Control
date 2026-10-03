@@ -53,7 +53,7 @@ export function ConnectAskStep({
           tone="neutral"
           title={t(
             "portal.accountLink.modal.loginNotConfigured.title",
-            "Stirling connection not configured",
+            "PDF Control connection not configured",
           )}
         >
           {t("portal.accountLink.modal.loginNotConfigured.before", "Set")}{" "}

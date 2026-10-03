@@ -93,6 +93,11 @@
   flex-shrink: 0;
 }
 
+.file-sidebar-lang-strip {
+  padding: 0 var(--nav-gutter) var(--space-3);
+  flex-shrink: 0;
+}
+
 .file-sidebar-collapse-toggle {
   margin-left: auto;
   flex-shrink: 0;

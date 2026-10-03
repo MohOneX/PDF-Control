@@ -112,7 +112,7 @@ export function ClassificationDemoWorkbenchView({
         <p className={styles.viewLead}>
           {t(
             "classificationDemo.results.failedBody",
-            "Stirling could not read your Downloads folder. Nothing on your computer was changed.",
+            "PDF Control could not read your Downloads folder. Nothing on your computer was changed.",
           )}
         </p>
         <div className={styles.viewActions}>
@@ -144,7 +144,7 @@ export function ClassificationDemoWorkbenchView({
                 count: groups.length,
               }),
               defaultValue:
-                "Stirling read {{documents}} and sorted them into {{types}}.",
+                "PDF Control read {{documents}} and sorted them into {{types}}.",
             })}
           </p>
         </header>

@@ -117,11 +117,11 @@ describe("createServerPlanCheckoutSession", () => {
     });
   });
 
-  it("refuses before invoking when no Stirling account is signed in", async () => {
+  it("refuses before invoking when no PDF Control account is signed in", async () => {
     getAccessToken.mockResolvedValue(null);
 
     await expect(createServerPlanCheckoutSession(plan)).rejects.toThrow(
-      /Sign in to the Stirling account/,
+      /Sign in to the PDF Control account/,
     );
     expect(invoke).not.toHaveBeenCalled();
   });

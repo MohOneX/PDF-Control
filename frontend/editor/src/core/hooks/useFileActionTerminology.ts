@@ -25,6 +25,11 @@ export function useFileActionTerminology() {
       "downloadUnavailable",
       "Download unavailable for this item",
     ),
+    exportToComputer: t("exportToComputer", "Export"),
+    exportToComputerTooltip: t(
+      "exportToComputerTooltip",
+      "Save a copy of the edited PDF to your computer",
+    ),
     noFilesInStorage: t(
       "fileUpload.noFilesInStorage",
       "No files available in storage. Upload some files first.",

@@ -59,7 +59,7 @@ export const Input_WithIcon: Story = {
     <FormField label="Search">
       <Input
         leadingIcon={<SearchIcon size={14} />}
-        placeholder="Search Stirling…"
+        placeholder="Search PDF Control…"
       />
     </FormField>
   ),
@@ -131,7 +131,7 @@ export const Radio_Group: Story = {
               {
                 value: "hyok",
                 label: "HYOK (Enterprise)",
-                description: "Stirling never sees the key material.",
+                description: "PDF Control never sees the key material.",
               },
             ]}
           />

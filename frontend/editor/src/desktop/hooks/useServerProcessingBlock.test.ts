@@ -33,7 +33,7 @@ describe("useServerProcessingBlock", () => {
   it("blocks with a reason naming both ways to connect", () => {
     useConnectedServerMock.mockReturnValue(false);
     const { result } = renderHook(() => useServerProcessingBlock());
-    expect(result.current).toContain("Stirling Cloud");
+    expect(result.current).toContain("PDF Control Cloud");
     expect(result.current).toContain("self-hosted");
   });
 

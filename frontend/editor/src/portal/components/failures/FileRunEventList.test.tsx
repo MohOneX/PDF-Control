@@ -430,7 +430,7 @@ describe("FileRunEventList", () => {
     expect(screen.getByText("File deleted")).toBeTruthy();
     expect(screen.getByText("ops@example.com")).toBeTruthy();
     // Nobody closed it by hand, so the actor column names the system instead.
-    expect(screen.getByText("Stirling")).toBeTruthy();
+    expect(screen.getByText("PDF Control")).toBeTruthy();
   });
 
   it("offers no outcome column while the open queue is showing", async () => {

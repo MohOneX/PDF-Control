@@ -34,7 +34,7 @@ import "@portal/theme/surface.css";
 import "@portal/views/Integrations.css";
 
 /**
- * The integrations catalogue: everything Stirling can talk to, in one place.
+ * The integrations catalogue: everything PDF Control can talk to, in one place.
  *
  * Three bands, one grouped table. Connected first - stored connections grouped
  * by vendor (two S3 buckets is normal, not an error), every instance a row you

@@ -8,6 +8,6 @@ export function useServerProcessingBlock(): string | null {
   if (useConnectedServer()) return null;
   return t(
     "filesPage.processing.blockedNeedsConnection",
-    "Sign in to Stirling Cloud or connect a self-hosted server to process folders.",
+    "Sign in to PDF Control Cloud or connect a self-hosted server to process folders.",
   );
 }

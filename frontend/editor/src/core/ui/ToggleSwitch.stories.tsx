@@ -61,7 +61,7 @@ export const InContext_SettingsRows: Story = {
             checked={a}
             onChange={setA}
             label="Encryption at rest"
-            description="AES-256 with Stirling-managed keys"
+            description="AES-256 with PDF Control-managed keys"
           />
           <ToggleSwitch
             checked={b}

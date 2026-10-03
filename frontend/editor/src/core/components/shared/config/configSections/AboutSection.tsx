@@ -29,6 +29,10 @@ export default function AboutSection({
   return (
     <div className="settings-section-container">
       <div className="about-section">
+        <p className="about-developed-by">
+          {t("brand.developedBy", "Developed By MohOneX")}
+        </p>
+
         <SettingsCard
           id="help"
           title={t("settings.help.label", "Tours")}

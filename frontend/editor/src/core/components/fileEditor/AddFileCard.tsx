@@ -39,7 +39,7 @@ const AddFileCard = () => {
       <div className={styles.addFileContent}>
         <Group gap="xs" align="center">
           <Wordmark
-            alt="Stirling PDF"
+            alt="PDF Control"
             muted
             style={{ height: "2.2rem", width: "auto" }}
           />

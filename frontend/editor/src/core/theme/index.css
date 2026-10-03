@@ -1,4 +1,6 @@
-/* Consolidated theme entry. Order matters: primitives → dimensions → colors. */
+/* Consolidated theme entry. Order matters: fonts → primitives → dimensions → colors. */
+@import "@fontsource-variable/source-sans-3/wght.css";
+@import "@fontsource-variable/alumni-sans/wght.css";
 @import "./primitives.css";
 @import "./dimensions.css";
 @import "./colors.css";

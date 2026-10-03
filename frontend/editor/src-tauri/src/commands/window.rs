@@ -3,7 +3,13 @@ use crate::utils::add_log;
 use std::collections::HashMap;
 use std::sync::atomic::{AtomicU32, Ordering};
 use std::sync::Mutex;
-use tauri::{AppHandle, Emitter, Manager, WebviewUrl, WebviewWindow, WebviewWindowBuilder};
+use tauri::image::Image;
+use tauri::{
+    include_image, AppHandle, Emitter, Manager, WebviewUrl, WebviewWindow, WebviewWindowBuilder,
+};
+
+/// Matches the in-app BrandMark; used for the Windows taskbar / title-bar icon.
+const APP_ICON: Image<'_> = include_image!("icons/128x128.png");
 
 // The primary window created from tauri.conf.json.
 pub const MAIN_WINDOW_LABEL: &str = "main";
@@ -39,13 +45,16 @@ const TRAFFIC_LIGHT_INSET: (f64, f64) = (13.0, 18.0);
 // OS drag-drop is disabled; the frontend handles file drops itself.
 pub fn build_main_window(app: &AppHandle) -> Result<WebviewWindow, String> {
     let builder = WebviewWindowBuilder::new(app, MAIN_WINDOW_LABEL, WebviewUrl::App("/".into()))
-        .title("Stirling PDF")
+        .title("PDF Control")
         .inner_size(1280.0, 800.0)
+        .center()
         // Below this width the file manager collapses to its mobile layout, so
         // keep the window above the breakpoint (matches the spawned windows).
         .min_inner_size(1030.0, 600.0)
         .resizable(true)
-        .disable_drag_drop_handler();
+        .disable_drag_drop_handler()
+        .icon(APP_ICON)
+        .map_err(|e| e.to_string())?;
 
     #[cfg(target_os = "windows")]
     let builder = builder
@@ -61,7 +70,19 @@ pub fn build_main_window(app: &AppHandle) -> Result<WebviewWindow, String> {
             TRAFFIC_LIGHT_INSET.1,
         ));
 
-    builder.build().map_err(|e| e.to_string())
+    let window = builder.build().map_err(|e| e.to_string())?;
+    prepare_main_window_geometry(&window);
+    Ok(window)
+}
+
+/// Frameless Windows + restored maximized state reads as fullscreen; a saved
+/// position of (0,0) after unmaximize lands in the upper-left. Normalize once
+/// at creation before the webview is shown.
+pub fn prepare_main_window_geometry(window: &WebviewWindow) {
+    if window.is_maximized().unwrap_or(false) {
+        let _ = window.unmaximize();
+    }
+    let _ = window.center();
 }
 
 // Shared window builder: every Stirling window must use identical WebView2
@@ -69,12 +90,14 @@ pub fn build_main_window(app: &AppHandle) -> Result<WebviewWindow, String> {
 // so all spawn paths funnel through here.
 fn build_window(app: &AppHandle, label: &str, url: &str) -> Result<WebviewWindow, String> {
     let builder = WebviewWindowBuilder::new(app, label, WebviewUrl::App(url.into()))
-        .title("Stirling-PDF")
+        .title("PDF Control")
         .inner_size(1280.0, 800.0)
         // Below this width the file manager collapses to its mobile layout,
         // so keep new windows above the breakpoint.
         .min_inner_size(1030.0, 600.0)
-        .resizable(true);
+        .resizable(true)
+        .icon(APP_ICON)
+        .map_err(|e| e.to_string())?;
 
     // WebView2 (Windows only) requires every webview sharing a user-data folder
     // to use identical additional_browser_args. wry's behaviour

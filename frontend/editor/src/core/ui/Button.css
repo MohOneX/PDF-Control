@@ -17,7 +17,7 @@
 
 /* ---- fat ---- */
 .sui-btn--fat.mantine-Button-root {
-  --button-radius: 0.75rem;
+  --button-radius: var(--radius-lg);
 }
 
 /* ---- shape ---- */

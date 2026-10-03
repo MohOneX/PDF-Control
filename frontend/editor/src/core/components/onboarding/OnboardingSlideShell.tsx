@@ -48,7 +48,7 @@ export interface OnboardingSlideShellProps {
 }
 
 /**
- * Hero art for the inset panel. `appIcon` renders the Stirling app mark
+ * Hero art for the inset panel. `appIcon` renders the PDF Control app mark
  * directly; otherwise the children glyph sits inside a soft white tile.
  */
 export function ShellHero({
@@ -60,7 +60,7 @@ export function ShellHero({
 }) {
   if (appIcon) {
     return (
-      <img src={stirlingMark} alt="Stirling" className={styles.heroAppIcon} />
+      <img src={stirlingMark} alt="PDF Control" className={styles.heroAppIcon} />
     );
   }
   return <div className={styles.heroTile}>{children}</div>;
@@ -150,7 +150,7 @@ export default function OnboardingSlideShell({
                   aria-hidden="true"
                   className={styles.brandLogo}
                 />
-                <span className={styles.wordmark}>Stirling</span>
+                <span className={styles.wordmark}>PDF Control</span>
               </div>
               <div className={styles.headerRight}>
                 {showProgress && (

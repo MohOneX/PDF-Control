@@ -59,7 +59,7 @@ function MockChatContent({
           flexShrink: 0,
         }}
       >
-        <span style={{ fontWeight: 600 }}>Stirling</span>
+        <span style={{ fontWeight: 600 }}>PDF Control</span>
         <Button
           variant="tertiary"
           shape="circle"
@@ -161,7 +161,7 @@ function ChatFABWidgetDemo({
           setOpen(true);
           setHasUnviewedResult(false);
         }}
-        aria-label="Open Stirling AI assistant"
+        aria-label="Open PDF Control AI assistant"
         aria-expanded={open}
         style={{
           position: "absolute",
@@ -278,7 +278,7 @@ function ChatFABFullFlowDemo() {
         loading={isLoading}
         showTick={hasUnviewedResult && !isLoading}
         onClick={handleOpen}
-        aria-label="Open Stirling AI assistant"
+        aria-label="Open PDF Control AI assistant"
         style={{
           position: "absolute",
           right: 16,

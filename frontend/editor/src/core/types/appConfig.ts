@@ -24,7 +24,7 @@ export interface AppConfig {
   premiumKey?: string;
   paygEnabled?: boolean;
   /**
-   * Whether this instance can link a Stirling (SaaS) account. False means the account-link
+   * Whether this instance can link a PDF Control (SaaS) account. False means the account-link
    * endpoints are absent (404), which is indistinguishable from "not linked" on the client, so
    * anything that prompts to link must gate on this first.
    */

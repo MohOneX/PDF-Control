@@ -170,6 +170,13 @@ export const mantineTheme = createTheme({
   // Primary color
   primaryColor: "primary",
 
+  fontFamily: "var(--font-sans)",
+  fontFamilyMonospace: "var(--font-mono)",
+  headings: {
+    fontFamily: "var(--font-display)",
+    fontWeight: "650",
+  },
+
   // Color palette
   colors: {
     primary,

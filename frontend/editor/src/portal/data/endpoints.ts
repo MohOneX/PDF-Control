@@ -50,7 +50,7 @@ export interface EndpointSchema {
 export interface Endpoint {
   /** Display name shown in cards and docs. */
   name: string;
-  /** Route path mounted under the Stirling API. */
+  /** Route path mounted under the PDF Control API. */
   endpoint: string;
   /** Numeric tier gate, see {@link EndpointTierGate}. */
   tier: EndpointTierGate;

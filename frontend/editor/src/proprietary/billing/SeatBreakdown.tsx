@@ -18,7 +18,7 @@ export function SeatBreakdown({
         {t("portal.billing.seats.breakdown", "Where users are counted")}
       </strong>
       <div className="billing-breakdown__row">
-        <span>{t("portal.billing.seats.cloud", "Stirling Cloud")}</span>
+        <span>{t("portal.billing.seats.cloud", "PDF Control Cloud")}</span>
         <strong>{breakdown.cloudUsers.toLocaleString()}</strong>
       </div>
       {breakdown.excludedOwners > 0 && (

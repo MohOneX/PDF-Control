@@ -157,7 +157,7 @@ describe("FreeTierPlanView", () => {
 
     await screen.findByText("120 of 500 used");
     expect(openLinkModal).not.toHaveBeenCalled();
-    expect(screen.getByText("Connect a Stirling account")).toBeInTheDocument();
+    expect(screen.getByText("Connect a PDF Control account")).toBeInTheDocument();
   });
 
   it("tells a non-admin the figures are not theirs to see, rather than failing", async () => {
@@ -190,7 +190,7 @@ describe("FreeTierPlanView", () => {
     expect(fetchUsers).not.toHaveBeenCalled();
     expect(
       screen.queryByRole("button", {
-        name: /Connect a Stirling account|Link account for more credits/,
+        name: /Connect a PDF Control account|Link account for more credits/,
       }),
     ).toBeNull();
   });
@@ -222,7 +222,7 @@ describe("FreeTierPlanView", () => {
       await screen.findByText(/Your Enterprise license includes processing/),
     ).toBeInTheDocument();
     fireEvent.click(
-      screen.getByRole("button", { name: "Connect a Stirling account" }),
+      screen.getByRole("button", { name: "Connect a PDF Control account" }),
     );
     expect(openLinkModal).toHaveBeenCalledWith("link");
     expect(

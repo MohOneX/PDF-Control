@@ -23,14 +23,14 @@ export function AiAboutNotice({ cloud = false }: { cloud?: boolean }) {
         color="blue"
         title={t(
           "admin.settings.ai.general.cloudNote.title",
-          "About Stirling Cloud AI",
+          "About PDF Control Cloud AI",
         )}
         icon={<Icon name="info" size="1rem" />}
       >
         <Text size="xs">
           {t(
             "admin.settings.ai.general.cloudNote.body",
-            "The reasoning runs on Stirling's infrastructure, billed to the account this server is linked to. There is no container to run and no provider key to hold here. Whatever the AI reads is processed by Stirling Cloud rather than on your own hardware.",
+            "The reasoning runs on PDF Control's infrastructure, billed to the account this server is linked to. There is no container to run and no provider key to hold here. Whatever the AI reads is processed by PDF Control Cloud rather than on your own hardware.",
           )}
         </Text>
       </Alert>
@@ -48,7 +48,7 @@ export function AiAboutNotice({ cloud = false }: { cloud?: boolean }) {
         <Text size="xs" style={{ flexGrow: 1 }}>
           {t(
             "admin.settings.ai.general.note.intro",
-            "A separate container you run next to Stirling. It does the reasoning; Stirling still does every page operation itself. It needs the same",
+            "A separate container you run next to PDF Control. It does the reasoning; Stirling still does every page operation itself. It needs the same",
           )}{" "}
           <Code>STIRLING_ENGINE_SHARED_SECRET</Code>{" "}
           {t(

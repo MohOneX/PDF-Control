@@ -10,8 +10,13 @@ import { ToolOperationHook } from "@app/hooks/tools/shared/useToolOperation";
 import { Tooltip } from "@app/components/shared/Tooltip";
 import { useFileActionTerminology } from "@app/hooks/useFileActionTerminology";
 import { useFileActionIcons } from "@app/hooks/useFileActionIcons";
-import { saveOperationResults } from "@app/services/operationResultsSaveService";
+import {
+  exportOperationResults,
+  saveOperationResults,
+  type OperationSaveContext,
+} from "@app/services/operationResultsSaveService";
 import { useFileActions, useFileSelectors } from "@app/contexts/FileContext";
+import type { FileId } from "@app/types/fileContext";
 import i18n from "@app/i18n";
 
 /**
@@ -74,28 +79,41 @@ function ReviewStepContent<TParams = unknown>({
       thumbnail: operation.thumbnails[index],
     })) || [];
 
+  const saveContext: OperationSaveContext = {
+    downloadUrl: operation.downloadUrl,
+    downloadFilename: operation.downloadFilename || "download",
+    downloadLocalPath: operation.downloadLocalPath,
+    outputFileIds: operation.outputFileIds,
+    getFile: (fileId) => selectors.getFile(fileId),
+    getStub: (fileId) => selectors.getStirlingFileStub(fileId),
+    markSaved: (fileId, savedPath) => {
+      const stub = selectors.getStirlingFileStub(fileId);
+      fileActions.updateStirlingFileStub(fileId as FileId, {
+        localFilePath: stub?.localFilePath ?? savedPath,
+        isDirty: false,
+      });
+    },
+  };
+
   const handleDownload = async () => {
     if (!operation.downloadUrl) return;
     try {
-      await saveOperationResults({
-        downloadUrl: operation.downloadUrl,
-        downloadFilename: operation.downloadFilename || "download",
-        downloadLocalPath: operation.downloadLocalPath,
-        outputFileIds: operation.outputFileIds,
-        getFile: (fileId) => selectors.getFile(fileId),
-        getStub: (fileId) => selectors.getStirlingFileStub(fileId),
-        markSaved: (fileId, savedPath) => {
-          const stub = selectors.getStirlingFileStub(fileId);
-          fileActions.updateStirlingFileStub(fileId, {
-            localFilePath: stub?.localFilePath ?? savedPath,
-            isDirty: false,
-          });
-        },
-      });
+      await saveOperationResults(saveContext);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       console.error("[ReviewToolStep] Failed to download file:", message);
       alert(`Failed to download file: ${message}`);
+    }
+  };
+
+  const handleExport = async () => {
+    if (!operation.downloadUrl) return;
+    try {
+      await exportOperationResults(saveContext);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error("[ReviewToolStep] Failed to export file:", message);
+      alert(`Failed to export file: ${message}`);
     }
   };
 
@@ -171,11 +189,25 @@ function ReviewStepContent<TParams = unknown>({
           data-testid="download-result-button"
           leftSection={<Icon name={icons.download} />}
           fullWidth
-          style={{ marginBottom: "1rem" }}
           onClick={handleDownload}
         >
           {terminology.download}
         </Button>
+      )}
+      {operation.downloadUrl && icons.saveAs && (
+        <Tooltip position="left" content={terminology.exportToComputerTooltip}>
+          <Button
+            data-testid="export-result-button"
+            leftSection={<Icon name={icons.saveAs} />}
+            variant="secondary"
+            accent="neutral"
+            fullWidth
+            style={{ marginBottom: "1rem" }}
+            onClick={handleExport}
+          >
+            {terminology.exportToComputer}
+          </Button>
+        </Tooltip>
       )}
 
       <SuggestedToolsSection />

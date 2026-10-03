@@ -45,3 +45,28 @@ export async function saveOperationResults(
 
   return result;
 }
+
+/** Always opens the native save dialog — never overwrites the source on disk. */
+export async function exportOperationResults(
+  context: OperationSaveContext,
+): Promise<DownloadResult | null> {
+  if (!context.downloadUrl) return null;
+
+  if (context.outputFileIds && context.outputFileIds.length > 0) {
+    for (const fileId of context.outputFileIds) {
+      const file = context.getFile(fileId as FileId);
+      if (!file) continue;
+
+      await downloadFile({
+        data: file,
+        filename: file.name,
+      });
+    }
+    return null;
+  }
+
+  return downloadFromUrl(
+    context.downloadUrl,
+    context.downloadFilename || "download",
+  );
+}

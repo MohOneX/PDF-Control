@@ -52,7 +52,7 @@ export function PolicyIngestionConfig({
               value: "builtin",
               label: t(
                 "portal.policies.wizard.locations.builtin",
-                "Stirling knowledge base",
+                "PDF Control knowledge base",
               ),
             },
             {

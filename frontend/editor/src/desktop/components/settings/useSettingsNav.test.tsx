@@ -107,7 +107,6 @@ it("finishes loading without billing when the connection lookup fails", async ()
     group.items.map((item) => item.key),
   );
   expect(keys).toContain("general");
-  expect(keys).toContain("connectionMode");
   expect(keys).not.toContain("billing");
   expect(result.current.aliases?.plan).toBeUndefined();
 });
@@ -179,19 +178,19 @@ it.each([
     state.mode = mode;
     state.authenticated = authenticated;
     const { result } = renderHook(() => useSettingsNav(vi.fn()));
-    await waitFor(() =>
-      expect(
-        result.current.sections.some((group) =>
-          group.items.some((item) => item.key === "connectionMode"),
-        ),
-      ).toBe(true),
-    );
+    await waitFor(() => expect(result.current.pending).toBe(false));
     const keys = result.current.sections.flatMap((group) =>
       group.items.map((item) => item.key),
     );
-    expect(keys).not.toContain("billing");
-    expect(keys).not.toContain("plan");
-    expect(keys).not.toContain("adminPlan");
+    if (mode === "local") {
+      // Offline-only: Preferences only — no Connection Mode / About / billing.
+      expect(keys).toEqual(["general"]);
+    } else {
+      expect(keys).toContain("connectionMode");
+      expect(keys).not.toContain("billing");
+      expect(keys).not.toContain("plan");
+      expect(keys).not.toContain("adminPlan");
+    }
     expect(result.current.aliases?.plan).toBeUndefined();
   },
 );

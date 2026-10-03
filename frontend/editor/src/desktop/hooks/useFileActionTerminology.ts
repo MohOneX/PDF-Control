@@ -22,6 +22,11 @@ export function useFileActionTerminology() {
     downloadAll: t("workbenchBar.saveAll", "Save All"),
     downloadSelected: t("fileManager.saveSelected", "Save Selected"),
     downloadUnavailable: t("saveUnavailable", "Save unavailable for this item"),
+    exportToComputer: t("exportToComputer", "Export"),
+    exportToComputerTooltip: t(
+      "exportToComputerTooltip",
+      "Save a copy of the edited PDF to your computer",
+    ),
     noFilesInStorage: t(
       "fileUpload.noFilesInStorageOpen",
       "No files available in storage. Open some files first.",

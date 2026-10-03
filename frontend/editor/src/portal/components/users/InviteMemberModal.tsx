@@ -312,7 +312,7 @@ export function InviteMemberModal({
             )
           : t(
               "users.invite.subtitle2",
-              "They'll get an email to join your Stirling workspace.",
+              "They'll get an email to join your PDF Control workspace.",
             )
       }
       footer={
@@ -472,7 +472,7 @@ export function InviteMemberModal({
             label={t("users.cap.editor", "Editor")}
             description={t(
               "users.invite.editorDesc",
-              "Edit PDFs in the Stirling PDF Editor. Everyone gets this.",
+              "Edit PDFs in the PDF Control Editor. Everyone gets this.",
             )}
           />
           {manageGrants && (

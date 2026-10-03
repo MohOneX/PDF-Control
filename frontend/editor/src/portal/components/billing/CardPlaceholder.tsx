@@ -27,7 +27,7 @@ export function CardPlaceholder() {
       <p className="portal-billing__card-placeholder-note">
         {t(
           "portal.billing.checkout.card.note",
-          "Card details collected by Stripe. Stirling never stores PAN or CVC.",
+          "Card details collected by Stripe. PDF Control never stores PAN or CVC.",
         )}
       </p>
     </div>

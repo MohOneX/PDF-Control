@@ -96,8 +96,8 @@ premium:
     customMetadata:
       autoUpdateMetadata: false
       author: username
-      creator: Stirling-PDF
-      producer: Stirling-PDF
+      creator: PDF Control
+      producer: PDF Control
     googleDrive:
       enabled: false # Enable Google Drive file picker integration
       clientId: "" # Google OAuth 2.0 client ID (obtain from Google Cloud Console)
@@ -172,16 +172,16 @@ system:
   defaultLocale: "" # force a default language for new users (e.g. 'en-US', 'de-DE'). Empty string auto-detects from the browser, falling back to en-US
   googlevisibility: false # 'true' serves an allow-all /robots.txt; 'false' serves a disallow-all /robots.txt to keep the instance out of search engines
   enableAlphaFunctionality: false # set to enable functionality which might need more testing before it fully goes live (this feature might make no changes)
-  showUpdate: true # see when a new update is available
+  showUpdate: false # see when a new update is available
   showUpdateOnlyAdmin: true # only admins can see when a new update is available, depending on showUpdate it must be set to 'true'
   showSettingsWhenNoLogin: true # set to 'false' to hide settings button when login is disabled (enableLogin: false). Only applies when login is disabled.
   customHTMLFiles: false # enable to have files placed in /customFiles/templates override the existing template HTML files
   tessdataDir: "" # path to the directory containing the Tessdata files. This setting is relevant for Windows systems. For Windows users, this path should be adjusted to point to the appropriate directory where the Tessdata files are stored.
-  enableAnalytics: null # Master toggle for analytics: set to 'true' to enable all analytics, 'false' to disable all analytics, or leave as 'null' to prompt admin on first launch
+  enableAnalytics: false # Master toggle for analytics: set to 'true' to enable all analytics, 'false' to disable all analytics, or leave as 'null' to prompt admin on first launch
   enableDesktopInstallSlide: true # Set to 'false' to hide the desktop app installation slide in the onboarding flow
   enableEasterEggs: true # Set to 'false' to remove the app's hidden novelty features
-  enablePosthog: null # Enable PostHog analytics (open-source product analytics): set to 'true' to enable, 'false' to disable, or 'null' to enable by default when analytics is enabled
-  enableScarf: null # Enable Scarf tracking pixel: set to 'true' to enable, 'false' to disable, or 'null' to enable by default when analytics is enabled
+  enablePosthog: false # Enable PostHog analytics (open-source product analytics): set to 'true' to enable, 'false' to disable, or 'null' to enable by default when analytics is enabled
+  enableScarf: false # Enable Scarf tracking pixel: set to 'true' to enable, 'false' to disable, or 'null' to enable by default when analytics is enabled
   enableUrlToPDF: false # Set to 'true' to enable URL to PDF, INTERNAL ONLY, known security issues, should not be used externally
   disableSanitize: false # set to true to disable Sanitize HTML; (can lead to injections in HTML)
   maxDPI: 500 # Maximum allowed DPI for PDF to image conversion
@@ -196,7 +196,7 @@ system:
     pageFormat: A4 # Page format for converted PDFs: 'keep' (original image dimensions), 'A4' (A4 page size), or 'letter' (US Letter page size). Only applies when convertToPdf is true.
     stretchToFit: false # Whether to stretch images to fill the entire page (may distort aspect ratio). If false, images are centered with preserved aspect ratio. Only applies when convertToPdf is true.
   serverCertificate:
-    enabled: true # Enable server-side certificate for "Sign with Stirling-PDF" option
+    enabled: true # Enable server-side certificate for "Sign with PDF Control" option
     organizationName: Stirling PDF Inc # Organization name for generated certificates
     validity: 365 # Certificate validity in days
     regenerateOnStartup: false # Generate new certificate on each startup
@@ -313,7 +313,7 @@ autoPipeline:
     allowedExtensions: [] # Optional extension allow-list (case-insensitive, without the leading dot). Empty list = accept all extensions. Example: ["pdf", "tiff"]
 
 ui:
-  appNameNavbar: "" # custom app/brand name. NOTE: no longer shown in the navbar (the navbar renders the logo). It IS used as the browser tab title and as the TOTP/2FA issuer label in authenticator apps. Empty falls back to "Stirling PDF"
+  appNameNavbar: "PDF Control" # custom app/brand name. NOTE: no longer shown in the navbar (the navbar renders the logo). It IS used as the browser tab title and as the TOTP/2FA issuer label in authenticator apps. Empty falls back to "PDF Control"
   languages: [] # If empty, all languages are enabled. To restrict to specific languages, use a whitelist like ["de_DE", "pl_PL", "sv_SE"]. Empty list or not restricting any languages will enable all available languages.
   defaultHideUnavailableTools: false # Default user preference: hide disabled tools instead of greying them out
   defaultHideUnavailableConversions: false # Default user preference: hide disabled conversion options instead of greying them out
@@ -468,24 +468,24 @@ mcp:
     requireExistingAccount: true # Reject tokens whose subject has no enabled Stirling account (recommended)
   engineCapabilityRefreshMinutes: 5 # How often to refresh the AI capabilities manifest from the engine
 
-# Multi-node Stirling PDF. Two different things are called "nodes" here: cluster.node.* is THIS
-# Stirling PDF instance, cluster.valkey.* is the shared Valkey - so 'mode: cluster' is Valkey's own.
+# Multi-node PDF Control. Two different things are called "nodes" here: cluster.node.* is THIS
+# PDF Control instance, cluster.valkey.* is the shared Valkey - so 'mode: cluster' is Valkey's own.
 cluster:
-  enabled: false # Run more than one Stirling PDF node. 'false' (default) = single instance; nothing below applies.
-  backplane: inprocess # How Stirling PDF nodes share state: 'inprocess' (one JVM) or 'valkey'.
+  enabled: false # Run more than one PDF Control node. 'false' (default) = single instance; nothing below applies.
+  backplane: inprocess # How PDF Control nodes share state: 'inprocess' (one JVM) or 'valkey'.
   artifactStore: local # Job artifacts: 'local' (per-node disk) or 's3'. Multi-node MUST use 's3'.
   s3:
     keyPrefix: transient/ # Prefix for job artifacts, so one bucket can also hold storage.s3.* uploads.
 
-  # This Stirling PDF instance's own identity.
+  # This PDF Control instance's own identity.
   node:
     id: "" # Blank = fresh UUID each boot. Set it for a stable name in monitoring.
     role: both # 'web' (serves HTTP), 'worker' (runs jobs), or 'both'.
-    internalAddress: "" # host:port other Stirling PDF nodes reach this one on. Blank = derived at startup.
+    internalAddress: "" # host:port other PDF Control nodes reach this one on. Blank = derived at startup.
     scheme: http # Scheme peers use for this node's /internal/cluster/** endpoints.
     heartbeatIntervalMs: 5000 # How often this node publishes its heartbeat.
 
-  # The Valkey/Redis server every Stirling PDF node shares. Must run with maxmemory-policy=noeviction: every key here has a TTL, so any eviction policy can drop live locks and node registrations.
+  # The Valkey/Redis server every PDF Control node shares. Must run with maxmemory-policy=noeviction: every key here has a TTL, so any eviction policy can drop live locks and node registrations.
   valkey:
     mode: "" # 'standalone' | 'sentinel' | 'cluster'. Blank = inferred from whichever block below is filled in. 'standalone' is a SPOF: no node starts while it is down.
     url: "" # e.g. 'redis://valkey:6379', optionally '/2' to pick a database. STANDALONE ONLY - sentinel and cluster ignore it, so a 'rediss://' url there refuses to boot unless tls.enabled is true.
@@ -493,7 +493,7 @@ cluster:
     username: "" # Valkey ACL user. Overrides any user in 'url'.
     password: "" # Valkey password. Overrides any password in 'url'. Never logged.
     commandTimeoutMs: 2000 # Per-command timeout, so a slow Valkey cannot stall request threads.
-    clientName: "" # CLIENT SETNAME, so monitoring can tell the Stirling PDF nodes apart. Blank = 'stirling-' + node id; 'off' sends none.
+    clientName: "" # CLIENT SETNAME, so monitoring can tell the PDF Control nodes apart. Blank = 'stirling-' + node id; 'off' sends none.
 
     # mode=sentinel: one Valkey primary plus replicas, with sentinels failing over between them.
     sentinel:

@@ -80,6 +80,11 @@ export const useConfigNavSections = (
     );
   }
 
+  // Offline-only desktop: Preferences only — no Connection Mode, About, or server/admin nav.
+  if (isLocalMode) {
+    return preferences ? [preferences] : [];
+  }
+
   const connectionModeSection: ConfigNavSection = {
     title: t("settings.connection.title", "Connection Mode"),
     items: [
@@ -88,26 +93,13 @@ export const useConfigNavSections = (
         label: t("settings.connection.title", "Connection Mode"),
         description: t(
           "settings.connection.description",
-          "Work locally on this machine or connect the app to a Stirling server.",
+          "Work locally on this machine or connect the app to a PDF Control server.",
         ),
         icon: "cloud",
         component: <ConnectionSettings />,
       },
     ],
   };
-
-  // In local mode only show Preferences + Connection Mode + About — everything
-  // else requires a server and will 500 or show irrelevant admin UI.
-  if (isLocalMode) {
-    const result: ConfigNavSection[] = [];
-    if (sections.length > 0) result.push(sections[0]);
-    result.push(connectionModeSection);
-    // Matched on the group id: its items were four rows and are now one, and a
-    // miss here drops the group silently.
-    const aboutSection = sections.find((section) => section.id === "about");
-    if (aboutSection) result.push(aboutSection);
-    return result;
-  }
 
   // Identifies self-hosted admin sections by their first item's stable key.
   // Using item keys avoids dependency on translated section titles (#17).

@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import PreferencesSection from "@core/components/shared/config/configSections/preferences/PreferencesSection";
 import { DefaultAppSettings } from "@app/components/shared/config/configSections/DefaultAppSettings";
 import { useDesktopInstall } from "@app/hooks/useDesktopInstall";
-import { useSaaSMode } from "@app/hooks/useSaaSMode";
 import {
   desktopUpdateService,
   type UpdateMode,
@@ -17,36 +16,18 @@ interface GeneralSectionProps {
 }
 
 /**
- * Desktop extension of GeneralSection.
- *
- * Adds default PDF editor settings, wires up the Tauri auto-updater install
- * flow, and exposes the user-facing update-mode control (prompt / auto /
- * disabled). When the mode is locked by a provisioning file the control is
- * still rendered but disabled, with a "Managed by administrator" hint, so
- * managed-deployment users can see what policy is in effect.
+ * Offline desktop Preferences page: no admin banner, no software-update section.
+ * Still exposes default PDF-association settings for the local app.
  */
 const GeneralSection: React.FC<GeneralSectionProps> = () => {
   const { t } = useTranslation();
   const install = useDesktopInstall();
-  // In SaaS connection mode the cloud owns app versioning — hide the update
-  // section (which also stops the core auto-check from firing).
-  const isSaaSMode = useSaaSMode();
   const [updateModeInfo, setUpdateModeInfo] = useState<UpdateModeInfo>({
     mode: "prompt",
     locked: false,
   });
   const [updateModeError, setUpdateModeError] = useState<string | null>(null);
 
-  // Check for Tauri updater availability on mount
-  useEffect(() => {
-    void install.checkTauriUpdate();
-  }, [install.checkTauriUpdate]);
-
-  // Load the current update mode + lock status on mount. We intentionally
-  // re-fetch on every mount so that a provisioning file dropped while the
-  // app is running (admin re-pushes config via MDM) is reflected the next
-  // time the user opens Settings — the Rust side re-reads the store on
-  // every call, so this is essentially a fresh read.
   useEffect(() => {
     let cancelled = false;
     desktopUpdateService.getUpdateModeInfo().then((info) => {
@@ -62,9 +43,6 @@ const GeneralSection: React.FC<GeneralSectionProps> = () => {
       setUpdateModeError(null);
       try {
         await desktopUpdateService.setUpdateMode(mode);
-        // Refresh rather than optimistically updating — the Rust command
-        // can refuse the change (locked) and we want the UI to reflect
-        // the authoritative stored value.
         const fresh = await desktopUpdateService.getUpdateModeInfo();
         setUpdateModeInfo(fresh);
       } catch (err) {
@@ -100,11 +78,9 @@ const GeneralSection: React.FC<GeneralSectionProps> = () => {
         </Alert>
       )}
       <PreferencesSection
+        hideAdminBanner
+        hideUpdateSection
         editorDefaultsSlot={<DefaultAppSettings />}
-        hideUpdateSection={
-          isSaaSMode ||
-          (updateModeInfo.mode === "disabled" && updateModeInfo.locked)
-        }
         desktopInstall={{
           state: install.state,
           progress: install.progress,

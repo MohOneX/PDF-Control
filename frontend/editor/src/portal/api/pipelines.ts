@@ -17,10 +17,10 @@ import type {
  * an ordered chain of tool steps with input sources, a trigger, and an output
  * destination. This surface lists EVERY backend policy (the user-facing Policies
  * page builds only a friendly subset of the same records). Like Sources, it
- * calls the real Stirling API base `/api/v1/policies`.
+ * calls the real PDF Control API base `/api/v1/policies`.
  */
 
-/** One tool invocation in a pipeline. `operation` is a Stirling endpoint path. */
+/** One tool invocation in a pipeline. `operation` is a PDF Control endpoint path. */
 export interface PipelineStep {
   operation: string;
   parameters: Record<string, unknown>;

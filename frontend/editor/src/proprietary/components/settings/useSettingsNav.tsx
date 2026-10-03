@@ -23,7 +23,7 @@ export type { SettingsNav };
  * shown twice, and its key aliases across.
  *
  * Admins manage encryption; only the organization owner manages billing and
- * the Stirling account connection. Portal access alone grants neither.
+ * the PDF Control account connection. Portal access alone grants neither.
  */
 export function useSettingsNav(onLeave: () => void): SettingsNav {
   const { t } = useTranslation();

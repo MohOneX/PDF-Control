@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * Stirling's customer-facing Supabase project endpoints ({@code auth.stirling.com} in production).
- * Overridable via {@code stirling.supabase.url} / {@code stirling.supabase.publishable-key}.
+ * Optional SaaS Supabase endpoints. Defaults are blank so PDF Control does not contact Stirling
+ * cloud unless explicitly configured via {@code stirling.supabase.url} / {@code
+ * stirling.supabase.publishable-key}.
  */
 @Component
 public class SupabaseEndpoints {
 
-    public static final String DEFAULT_URL = "https://auth.stirling.com";
+    public static final String DEFAULT_URL = "";
 
     /** Publishable (anon) key — safe to ship in client/server code. */
-    public static final String DEFAULT_PUBLISHABLE_KEY =
-            "sb_publishable_UHz2SVRF5mvdrPHWkRteyA_yNlZTkYb"; // gitleaks:allow
+    public static final String DEFAULT_PUBLISHABLE_KEY = "";
 
     @Value("${stirling.supabase.url:" + DEFAULT_URL + "}")
     private String url;

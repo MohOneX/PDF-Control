@@ -71,7 +71,7 @@ function renderAt(initial: string) {
   );
 }
 
-describe("Pipelines on an instance with no Stirling account", () => {
+describe("Pipelines on an instance with no PDF Control account", () => {
   beforeEach(() => {
     connect.mockReset();
     fetchPipelines.mockReset();

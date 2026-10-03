@@ -25,7 +25,7 @@ export function LibraryTabs({
   const { t } = useTranslation();
   const tabs: { id: FilesPageTab; label: string }[] = [
     { id: "recent", label: t("filesPage.recentFiles", "Recents") },
-    { id: "all", label: t("filesPage.allFiles", "Stirling library") },
+    { id: "all", label: t("filesPage.allFiles", "PDF Control library") },
     ...(sharingEnabled
       ? [
           {

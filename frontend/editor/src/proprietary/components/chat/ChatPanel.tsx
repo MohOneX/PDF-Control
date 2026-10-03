@@ -472,13 +472,13 @@ export function ChatPanel({ onBack, backLabel }: ChatPanelProps) {
           <Logo
             variant="textOnly"
             textHeight="17px"
-            alt={t("agents.stirling_name", "Stirling")}
+            alt={t("agents.stirling_name", "PDF Control")}
           />
         }
         loading={isLoading}
         className="chat-panel__header"
         barClassName="chat-panel__agent-pill-vt"
-        menuLabel={t("chat.header.agentMenu", "Stirling agent options")}
+        menuLabel={t("chat.header.agentMenu", "PDF Control agent options")}
         menuItems={[
           {
             key: "clear-chat",

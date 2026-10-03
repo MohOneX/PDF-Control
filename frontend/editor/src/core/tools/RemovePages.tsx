@@ -6,10 +6,12 @@ import { useRemovePagesParameters } from "@app/hooks/tools/removePages/useRemove
 import { useRemovePagesOperation } from "@app/hooks/tools/removePages/useRemovePagesOperation";
 import RemovePagesSettings from "@app/components/tools/removePages/RemovePagesSettings";
 import { useRemovePagesTips } from "@app/components/tooltips/useRemovePagesTips";
+import { useViewScopedFileStubs } from "@app/hooks/tools/shared/useViewScopedFiles";
 
 const RemovePages = (props: BaseToolProps) => {
   const { t } = useTranslation();
   const tooltipContent = useRemovePagesTips();
+  const stubs = useViewScopedFileStubs();
 
   const base = useBaseTool(
     "remove-pages",
@@ -18,10 +20,15 @@ const RemovePages = (props: BaseToolProps) => {
     props,
   );
 
+  const primaryFile = base.selectedFiles[0] ?? null;
+  const knownPageCount = stubs[0]?.processedFile?.totalPages;
+
   const settingsContent = (
     <RemovePagesSettings
       parameters={base.params.parameters}
       onParameterChange={base.params.updateParameter}
+      file={primaryFile}
+      knownPageCount={knownPageCount}
       disabled={base.endpointLoading}
     />
   );

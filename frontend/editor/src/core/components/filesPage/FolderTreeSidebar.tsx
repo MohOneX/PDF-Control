@@ -173,7 +173,7 @@ function RootRow({ fileCount, isActive, onSelect, onDropFiles }: RootRowProps) {
         <Icon name="house" size={18} />
       </span>
       <span className="files-page-tree-name">
-        {t("filesPage.allFiles", "Stirling library")}
+        {t("filesPage.allFiles", "PDF Control library")}
       </span>
       <span className="files-page-tree-count">{fileCount}</span>
     </div>
@@ -460,7 +460,7 @@ function TreeNodeRow({
                 }
               >
                 {kind === "local"
-                  ? t("filesPage.removeLocalFolder", "Unmount from Stirling")
+                  ? t("filesPage.removeLocalFolder", "Unmount from PDF Control")
                   : t("filesPage.treeMenu.delete", "Delete folder")}
               </Menu.Item>
             )}

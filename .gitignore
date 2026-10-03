@@ -209,6 +209,17 @@ venv.bak/
 # Env files (secrets / local overrides). Subproject .gitignore files whitelist any committed defaults.
 .env*
 !/.env
+# Extra local override patterns (never commit personal secrets or machine-specific values).
+**/.env.local
+**/.env.*.local
+**/*.local.env
+**/secrets/
+**/credentials/
+**/private-keys/
+
+# Misplaced copies outside frontend/editor (real assets live under editor/).
+/frontend/public/
+/frontend/src/
 
 # VS Code
 /.vscode/**/*

@@ -88,11 +88,11 @@ export function ClassificationDemoModal({
         hero: <DefaultAppHero />,
         title: t(
           "classificationDemo.defaultApp.title",
-          "Open every PDF in Stirling",
+          "Open every PDF in PDF Control",
         ),
         body: t(
           "classificationDemo.defaultApp.body",
-          "Make Stirling your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings.",
+          "Make PDF Control your default PDF app. Every PDF you open, from email, your browser, or your desktop, lands here, ready to read or edit. You can change this any time in Settings.",
         ),
         buttons: [
           {
@@ -104,7 +104,7 @@ export function ClassificationDemoModal({
             key: "default-set",
             label: t(
               "classificationDemo.defaultApp.cta",
-              "Make Stirling my default",
+              "Make PDF Control my default",
             ),
             primary: true,
             disabled: isLoading,
@@ -118,7 +118,7 @@ export function ClassificationDemoModal({
       hero: <FolderHero />,
       title: t(
         "classificationDemo.offer.title",
-        "See what Stirling can do with a whole folder",
+        "See what PDF Control can do with a whole folder",
       ),
       body: (
         <div>

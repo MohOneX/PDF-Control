@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useBackendHealth } from "@app/hooks/useBackendHealth";
-import { useEndpointConfig } from "@app/hooks/useEndpointConfig";
 import { tauriBackendService } from "@app/services/tauriBackendService";
 
 /**
@@ -9,7 +8,6 @@ import { tauriBackendService } from "@app/services/tauriBackendService";
  */
 export function useBackendInitializer(enabled = true) {
   const { status, checkHealth } = useBackendHealth();
-  const { backendUrl } = useEndpointConfig();
 
   useEffect(() => {
     // Skip if disabled
@@ -17,17 +15,13 @@ export function useBackendInitializer(enabled = true) {
       return;
     }
 
-    // Skip if backend already running
-    if (tauriBackendService.isBackendRunning()) {
-      void checkHealth();
-      return;
-    }
-
     const initializeBackend = async () => {
       try {
-        await tauriBackendService.startBackend(backendUrl);
-
-        // Begin health checks after a short delay
+        if (tauriBackendService.getBackendPort()) {
+          void checkHealth();
+          return;
+        }
+        await tauriBackendService.attachToBundledBackend();
         setTimeout(() => {
           void checkHealth();
         }, 500);
@@ -36,9 +30,13 @@ export function useBackendInitializer(enabled = true) {
       }
     };
 
-    // Only start backend if it's not already starting/healthy
+    if (tauriBackendService.getBackendPort()) {
+      void checkHealth();
+      return;
+    }
+
     if (status !== "healthy" && status !== "starting") {
       void initializeBackend();
     }
-  }, [enabled, status, backendUrl, checkHealth]);
+  }, [enabled, status, checkHealth]);
 }

@@ -26,9 +26,9 @@ export function useChecklistSetupItem(
     item: {
       id: "set-default-app",
       titleKey: "onboarding.checklist.setDefaultApp.title",
-      titleFallback: "Make Stirling your default",
+      titleFallback: "Make PDF Control your default",
       descriptionKey: "onboarding.checklist.setDefaultApp.description",
-      descriptionFallback: "Open PDF files in Stirling PDF",
+      descriptionFallback: "Open PDF files in PDF Control",
       onClick: () => void handleSetDefault(),
     },
     dialog: null,

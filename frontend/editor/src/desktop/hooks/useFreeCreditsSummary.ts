@@ -5,7 +5,7 @@ import { type NavFooterCredits } from "@app/components/shared/navFooter/NavFoote
 /**
  * Credits are a cloud concept. Local and self-hosted backends have no wallet, and the
  * cloud hook otherwise surfaces the last cached figures once a wallet has ever loaded, so
- * gate on SaaS mode: the footer meter stays hidden until the app is signed in to Stirling
+ * gate on SaaS mode: the footer meter stays hidden until the app is signed in to PDF Control
  * Cloud. Mirrors {@link useWallet}.
  */
 export function useFreeCreditsSummary(): NavFooterCredits | null {

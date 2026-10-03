@@ -13,24 +13,24 @@ export const useRemovePagesTips = (): TooltipContent => {
         title: t("removePages.tooltip.pageNumbers.title", "Page Selection"),
         description: t(
           "removePages.tooltip.pageNumbers.text",
-          "Specify which pages to remove from your PDF. You can select individual pages, ranges, or use mathematical expressions.",
+          "Click page thumbnails to mark them for removal, then press Remove Pages. Selected pages show a minus badge.",
         ),
         bullets: [
           t(
             "removePages.tooltip.pageNumbers.bullet1",
-            "Individual pages: 1,3,5 (removes pages 1, 3, and 5)",
+            "Click a thumbnail to select or deselect that page",
           ),
           t(
             "removePages.tooltip.pageNumbers.bullet2",
-            "Page ranges: 1-5,10-15 (removes pages 1-5 and 10-15)",
+            "Use Select all / Clear for bulk changes",
           ),
           t(
             "removePages.tooltip.pageNumbers.bullet3",
-            "Mathematical: 2n+1 (removes odd pages)",
+            "Advanced: type ranges like 1-5 or expressions like 2n+1",
           ),
           t(
             "removePages.tooltip.pageNumbers.bullet4",
-            "Open ranges: 5- (removes from page 5 to end)",
+            "Open ranges: 5- removes from page 5 to the end",
           ),
         ],
       },

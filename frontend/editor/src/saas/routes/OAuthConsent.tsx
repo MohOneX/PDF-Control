@@ -75,7 +75,7 @@ export default function OAuthConsent() {
   }, [location.search]);
 
   useDocumentMeta({
-    title: `${t("oauthConsent.title", "Authorize access")} - Stirling PDF`,
+    title: `${t("oauthConsent.title", "Authorize access")} - PDF Control`,
   });
 
   // Load the pending authorization once a session is available.
@@ -193,12 +193,12 @@ export default function OAuthConsent() {
     <div className="auth-logo-block">
       <img
         src={loginHeader}
-        alt="Stirling PDF"
+        alt="PDF Control"
         className="auth-logo-header auth-logo-header--light"
       />
       <img
         src={withBasePath("/modern-logo/LoginDarkModeHeader.svg")}
-        alt="Stirling PDF"
+        alt="PDF Control"
         className="auth-logo-header auth-logo-header--dark"
       />
     </div>
@@ -228,7 +228,7 @@ export default function OAuthConsent() {
         <Text ta="center" c="dimmed" mb="lg">
           {t(
             "oauthConsent.signInPrompt",
-            "Sign in to your Stirling PDF account to continue connecting the app.",
+            "Sign in to your PDF Control account to continue connecting the app.",
           )}
         </Text>
         <Button
@@ -274,13 +274,13 @@ export default function OAuthConsent() {
       <Text ta="center" c="dimmed" mb="lg">
         {t("oauthConsent.requesting", {
           app: appName,
-          defaultValue: `${appName} wants to access your Stirling PDF account`,
+          defaultValue: `${appName} wants to access your PDF Control account`,
         })}
       </Text>
 
       {/* Be explicit about what connecting actually grants. The OAuth scopes
           (openid/email) only cover identity; the real power is that the issued
-          token lets the app drive the MCP endpoint - i.e. run any Stirling PDF
+          token lets the app drive the MCP endpoint - i.e. run any PDF Control
           tool as this user, audited as them and counted against their usage. */}
       <Paper withBorder p="md" mb="lg">
         <Text fw={600} fz="sm" mb="xs">
@@ -293,7 +293,7 @@ export default function OAuthConsent() {
           <List.Item>
             {t("oauthConsent.access.tools", {
               app: appName,
-              defaultValue: `Use your Stirling PDF tools on your behalf - convert, edit, sign, secure and process your documents`,
+              defaultValue: `Use your PDF Control tools on your behalf - convert, edit, sign, secure and process your documents`,
             })}
           </List.Item>
           <List.Item>

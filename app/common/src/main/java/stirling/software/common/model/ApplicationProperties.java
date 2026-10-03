@@ -1370,7 +1370,7 @@ public class ApplicationProperties {
         @Data
         public static class ServerCertificate {
             private boolean enabled =
-                    true; // Enable server-side "Sign with Stirling-PDF" certificate
+                    true; // Enable server-side "Sign with PDF Control" certificate
             private String organizationName = "Stirling PDF Inc";
             private int validity = 365; // Certificate validity in days
             private boolean regenerateOnStartup =
@@ -1708,12 +1708,12 @@ public class ApplicationProperties {
 
             @Deprecated
             public String getCreator() {
-                return creator == null || creator.trim().isEmpty() ? "Stirling-PDF" : creator;
+                return creator == null || creator.trim().isEmpty() ? "PDF Control" : creator;
             }
 
             @Deprecated
             public String getProducer() {
-                return producer == null || producer.trim().isEmpty() ? "Stirling-PDF" : producer;
+                return producer == null || producer.trim().isEmpty() ? "PDF Control" : producer;
             }
         }
     }
@@ -1883,13 +1883,11 @@ public class ApplicationProperties {
                 private String producer;
 
                 public String getCreator() {
-                    return creator == null || creator.trim().isEmpty() ? "Stirling-PDF" : creator;
+                    return creator == null || creator.trim().isEmpty() ? "PDF Control" : creator;
                 }
 
                 public String getProducer() {
-                    return producer == null || producer.trim().isEmpty()
-                            ? "Stirling-PDF"
-                            : producer;
+                    return producer == null || producer.trim().isEmpty() ? "PDF Control" : producer;
                 }
             }
         }

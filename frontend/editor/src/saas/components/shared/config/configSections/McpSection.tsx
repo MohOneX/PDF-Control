@@ -129,7 +129,7 @@ function McpGuestNotice({ onGoToAccount }: { onGoToAccount: () => void }) {
           <Text size="sm" c="dimmed" style={{ flex: 1 }}>
             {t(
               "config.mcp.guestInfo",
-              "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run Stirling PDF tools on your behalf.",
+              "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run PDF Control tools on your behalf.",
             )}
           </Text>
           <Button
@@ -215,7 +215,7 @@ function McpClientSetupCard({ mcpUrl }: { mcpUrl: string }) {
         <Text size="xs" c="dimmed">
           {t(
             "config.mcp.setup.hint",
-            "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your Stirling account on first use - no keys to copy.",
+            "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your PDF Control account on first use - no keys to copy.",
           )}
         </Text>
         <McpClientTabs clients={clients} />
@@ -232,7 +232,7 @@ function McpUsageTip() {
         <Text size="sm">
           {t(
             "config.mcp.tip",
-            "Every action your assistant runs is performed as your account and counts towards your usage, just like using the Stirling PDF API and Automation.",
+            "Every action your assistant runs is performed as your account and counts towards your usage, just like using the PDF Control API and Automation.",
           )}
         </Text>
         <Button
@@ -265,7 +265,7 @@ export default function McpSection() {
   const { config } = useAppConfig();
   const { user } = useAuth();
   // Guests can't authorise an MCP client - the OAuth flow mints an anonymous
-  // token with no email, which the server can't map to a Stirling account. So
+  // token with no email, which the server can't map to a PDF Control account. So
   // mirror the API-keys section: show a "create an account" card instead of a
   // connection guide that would only dead-end at sign-in.
   const isAnonymous = Boolean(user && isUserAnonymous(user));

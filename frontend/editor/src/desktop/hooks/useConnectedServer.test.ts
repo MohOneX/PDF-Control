@@ -59,7 +59,7 @@ describe("useConnectedServer", () => {
     await waitFor(() => expect(result.current).toBe(true));
   });
 
-  it("is true when authenticated against Stirling Cloud", async () => {
+  it("is true when authenticated against PDF Control Cloud", async () => {
     withAuthStatus("authenticated", { username: "ada" });
     getCurrentModeMock.mockResolvedValue("saas");
     const { result } = renderHook(() => useConnectedServer());

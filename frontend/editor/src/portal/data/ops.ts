@@ -1092,7 +1092,7 @@ export const SOURCE_OPTIONS: readonly SourceOption[] = [
   {
     id: "upload",
     label: "Upload API",
-    desc: "POST documents to a Stirling endpoint",
+    desc: "POST documents to a PDF Control endpoint",
   },
   {
     id: "webhook",

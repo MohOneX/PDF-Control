@@ -103,7 +103,7 @@ export function CustomMetadataCard({
                 },
               })
             }
-            placeholder="Stirling-PDF"
+            placeholder="PDF Control"
             disabled={!loginEnabled}
           />
         </div>
@@ -139,7 +139,7 @@ export function CustomMetadataCard({
                 },
               })
             }
-            placeholder="Stirling-PDF"
+            placeholder="PDF Control"
             disabled={!loginEnabled}
           />
         </div>

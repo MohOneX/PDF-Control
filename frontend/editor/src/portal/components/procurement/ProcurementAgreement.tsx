@@ -16,7 +16,7 @@ import "@portal/theme/surface.css";
 import "@portal/views/Procurement.css";
 
 /**
- * The agreement (security) step: the buyer reviews the full Stirling Enterprise Agreement — Master
+ * The agreement (security) step: the buyer reviews the full PDF Control Enterprise Agreement — Master
  * Services Agreement + Order Form (from the quote) + Data Processing Addendum, one signature — then
  * signs it. The document body is served by the backend from the versioned legal registry (static
  * legal copy, English only); this component renders it, gates signing behind a scroll-through, and

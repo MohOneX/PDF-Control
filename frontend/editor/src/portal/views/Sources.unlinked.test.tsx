@@ -4,7 +4,7 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { PortalViewProviders } from "@portal/test/TestQueryProvider";
 
 /**
- * Connecting a source needs no Stirling account: the source is stored on this instance, and the
+ * Connecting a source needs no PDF Control account: the source is stored on this instance, and the
  * processing it feeds runs against the instance's own monthly grant. So neither the button nor the
  * `?new=1` deep link (how the Documents queue and the pipelines empty state arrive) asks for one.
  */
@@ -73,7 +73,7 @@ const renderAt = (initial: string) =>
     </PortalViewProviders>,
   );
 
-describe("Sources on an instance with no Stirling account", () => {
+describe("Sources on an instance with no PDF Control account", () => {
   beforeEach(() => {
     connect.mockReset();
     fetchSources.mockReset();

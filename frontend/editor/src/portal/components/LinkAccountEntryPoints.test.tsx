@@ -38,10 +38,10 @@ beforeEach(() => {
 it("offers the sidebar connection action to the owner", () => {
   show();
   expect(
-    screen.getByRole("button", { name: "Link Stirling account" }),
+    screen.getByRole("button", { name: "Link PDF Control account" }),
   ).toBeVisible();
   fireEvent.click(
-    screen.getByRole("button", { name: "Link Stirling account" }),
+    screen.getByRole("button", { name: "Link PDF Control account" }),
   );
   expect(ui.linkModalOpen).toBe(true);
 });

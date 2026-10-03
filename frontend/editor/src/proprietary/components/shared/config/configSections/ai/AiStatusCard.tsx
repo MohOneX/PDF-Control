@@ -82,13 +82,13 @@ export function AiStatusCard({ settings }: AiStatusCardProps) {
     down: cloud
       ? t(
           "admin.settings.ai.status.cloud.down.title",
-          "Stirling Cloud unreachable",
+          "PDF Control Cloud unreachable",
         )
       : t("admin.settings.ai.status.down.title", "Engine unreachable"),
     degraded: cloud
       ? t(
           "admin.settings.ai.status.cloud.degraded.title",
-          "Stirling Cloud is refusing this server",
+          "PDF Control Cloud is refusing this server",
         )
       : t(
           "admin.settings.ai.status.degraded.title",
@@ -97,7 +97,7 @@ export function AiStatusCard({ settings }: AiStatusCardProps) {
     ok: cloud
       ? t(
           "admin.settings.ai.status.cloud.ok.title",
-          "Running on Stirling Cloud",
+          "Running on PDF Control Cloud",
         )
       : t("admin.settings.ai.status.ok.title", "Engine running"),
   };
@@ -111,7 +111,7 @@ export function AiStatusCard({ settings }: AiStatusCardProps) {
     down: cloud
       ? t(
           "admin.settings.ai.status.cloud.down.body",
-          "This server could not reach Stirling Cloud. Check the account link and that this server can reach the internet.",
+          "This server could not reach PDF Control Cloud. Check the account link and that this server can reach the internet.",
         )
       : t(
           "admin.settings.ai.status.down.body",
@@ -120,7 +120,7 @@ export function AiStatusCard({ settings }: AiStatusCardProps) {
     degraded: cloud
       ? t(
           "admin.settings.ai.status.cloud.degraded.body",
-          "Stirling Cloud answered but refused this server. The account link may have been revoked.",
+          "PDF Control Cloud answered but refused this server. The account link may have been revoked.",
         )
       : t(
           "admin.settings.ai.status.degraded.body",
@@ -129,7 +129,7 @@ export function AiStatusCard({ settings }: AiStatusCardProps) {
     ok: cloud
       ? t(
           "admin.settings.ai.status.cloud.ok.body",
-          "Stirling Cloud accepted this server. Nothing to run or patch here.",
+          "PDF Control Cloud accepted this server. Nothing to run or patch here.",
         )
       : t(
           "admin.settings.ai.status.ok.body",
@@ -223,7 +223,7 @@ export function AiStatusCard({ settings }: AiStatusCardProps) {
               }
               value={
                 cloud
-                  ? t("admin.settings.ai.status.cloud.name", "Stirling Cloud")
+                  ? t("admin.settings.ai.status.cloud.name", "PDF Control Cloud")
                   : settings.url || "—"
               }
               title={cloud ? undefined : settings.url || undefined}

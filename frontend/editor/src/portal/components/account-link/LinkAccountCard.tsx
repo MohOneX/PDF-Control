@@ -74,13 +74,13 @@ export function LinkAccountCard({ link, instanceName }: Props) {
             <h2>
               {instanceName ??
                 link.status?.name ??
-                t("portal.accountLink.card.title", "Stirling Cloud")}
+                t("portal.accountLink.card.title", "PDF Control Cloud")}
             </h2>
             {linked && (
               <InfoTooltip
                 label={t(
                   "portal.accountLink.card.billingNote",
-                  "This server shares your team’s processing allowance in Stirling Cloud.",
+                  "This server shares your team’s processing allowance in PDF Control Cloud.",
                 )}
               />
             )}
@@ -101,7 +101,7 @@ export function LinkAccountCard({ link, instanceName }: Props) {
             <p className="portal-link__account">
               {t(
                 "portal.accountLink.card.signedInAs",
-                "Signed in to Stirling Cloud as",
+                "Signed in to PDF Control Cloud as",
               )}{" "}
               <strong>{email}</strong>
             </p>
@@ -131,7 +131,7 @@ export function LinkAccountCard({ link, instanceName }: Props) {
         >
           {t(
             "portal.accountLink.card.loginNotConfigured.description",
-            "Ask your server administrator to enable the connection to Stirling Cloud.",
+            "Ask your server administrator to enable the connection to PDF Control Cloud.",
           )}
         </Banner>
       )}
@@ -161,7 +161,7 @@ export function LinkAccountCard({ link, instanceName }: Props) {
           <p>
             {t(
               "portal.accountLink.card.connectDescription",
-              "Connect this server to use your team’s processing allowance in Stirling Cloud.",
+              "Connect this server to use your team’s processing allowance in PDF Control Cloud.",
             )}
           </p>
           <Button
@@ -171,7 +171,7 @@ export function LinkAccountCard({ link, instanceName }: Props) {
           >
             {t(
               "portal.accountLink.card.linkButton",
-              "Connect your Stirling account",
+              "Connect your PDF Control account",
             )}
           </Button>
         </div>
@@ -209,7 +209,7 @@ export function LinkAccountCard({ link, instanceName }: Props) {
         <p>
           {t(
             "portal.accountLink.card.disconnectBody",
-            "This server will stop using your team’s processing allowance in Stirling Cloud. Your local files stay on this server. To connect again, follow the original connection steps.",
+            "This server will stop using your team’s processing allowance in PDF Control Cloud. Your local files stay on this server. To connect again, follow the original connection steps.",
           )}
         </p>
       </Modal>

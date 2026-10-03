@@ -77,7 +77,7 @@ function OwnerAccountLinkPanel() {
       title={t("portal.settings.sections.account-link", "Account connection")}
       description={t(
         "portal.accountLink.panel.sub",
-        "Manage this server’s connection to your Stirling Cloud account.",
+        "Manage this server’s connection to your PDF Control Cloud account.",
       )}
       actions={
         cloudSettingsUrl && (
@@ -118,7 +118,7 @@ function OwnerAccountLinkPanel() {
                   ? "portal.accountLink.panel.otherInstancesSub"
                   : "portal.accountLink.panel.instancesSub",
                 deviceId
-                  ? "Other self-hosted servers connected to the same team in Stirling Cloud."
+                  ? "Other self-hosted servers connected to the same team in PDF Control Cloud."
                   : "Self-hosted servers connected to the same team.",
               )}
             />

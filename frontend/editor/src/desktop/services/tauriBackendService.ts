@@ -180,16 +180,56 @@ export class TauriBackendService {
     void this.waitForPort();
   }
 
-  async startBackend(backendUrl?: string): Promise<void> {
-    if (this.backendStarted) {
+  /**
+   * Attach to the bundled backend Rust starts at app launch: discover the port,
+   * start the JVM only if needed, then run health monitoring.
+   */
+  async attachToBundledBackend(): Promise<void> {
+    if (this.startPromise) {
+      return this.startPromise;
+    }
+    if (this.backendStarted && this.backendPort) {
       return;
     }
 
-    this.isLocalBackend = true; // We own this backend process
+    this.isLocalBackend = true;
+    this.startupGraceUntil = Date.now() + TauriBackendService.STARTUP_GRACE_MS;
+    this.setStatus("starting");
+
+    this.startPromise = (async () => {
+      try {
+        const existingPort = await invoke<number | null>("get_backend_port");
+        if (!existingPort) {
+          await invoke("start_backend");
+        }
+        this.backendStarted = true;
+        await this.waitForPort();
+        this.beginHealthMonitoring();
+      } catch (error) {
+        this.setStatus("unhealthy");
+        console.error(
+          "[TauriBackendService] Failed to attach to bundled backend:",
+          error,
+        );
+        throw error;
+      } finally {
+        this.startPromise = null;
+      }
+    })();
+
+    return this.startPromise;
+  }
+
+  async startBackend(backendUrl?: string): Promise<void> {
+    if (this.backendStarted && this.backendPort) {
+      return;
+    }
 
     if (this.startPromise) {
       return this.startPromise;
     }
+
+    this.isLocalBackend = true;
 
     this.startupGraceUntil = Date.now() + TauriBackendService.STARTUP_GRACE_MS;
     this.setStatus("starting");
@@ -199,7 +239,6 @@ export class TauriBackendService {
         this.backendStarted = true;
         this.setStatus("starting");
 
-        // Poll for the dynamically assigned port
         await this.waitForPort();
         this.beginHealthMonitoring();
       })

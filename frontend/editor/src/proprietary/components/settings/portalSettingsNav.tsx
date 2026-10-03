@@ -98,7 +98,7 @@ export function buildPortalSettingsSections(
       label: t("portal.settings.sections.account-link", "Account connection"),
       description: t(
         "portal.accountLink.panel.sub",
-        "Manage this server’s connection to your Stirling Cloud account.",
+        "Manage this server’s connection to your PDF Control Cloud account.",
       ),
       icon: "link",
       component: <AccountLinkSection />,
@@ -128,7 +128,7 @@ export function buildPortalSettingsSections(
           label: t("settings.developer.apiKeys", "API Keys"),
           description: t(
             "settings.developer.apiKeysDescription",
-            "Personal keys for calling the Stirling API from scripts and integrations.",
+            "Personal keys for calling the PDF Control API from scripts and integrations.",
           ),
           icon: "key",
           component: <ApiKeysSection />,

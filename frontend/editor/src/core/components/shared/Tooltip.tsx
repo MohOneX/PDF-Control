@@ -72,7 +72,7 @@ function TooltipHeader({
         {header.logo || (
           <img
             src={tooltipLogo}
-            alt="Stirling PDF"
+            alt="PDF Control"
             style={{ width: "1.4rem", height: "1.4rem", display: "block" }}
           />
         )}

@@ -4,7 +4,7 @@ ARG BASE_VERSION=1.0.6@sha256:678d67fd8c80d625b54e39ced1e712cc0dcfee0601c507ac2a
 ARG BASE_IMAGE=stirlingtools/stirling-pdf-base:${BASE_VERSION}
 
 # Stage 1: Build the Java application (backend only, no frontend)
-FROM gradle:9.7.1-jdk25@sha256:e06837018d077ee7f1218e53499425ca7615702ad58856d980c154caa17eb093 AS app-build
+FROM gradle:9.8.1-jdk25@sha256:e4f9e3d037cc0c7d8fc42cd97edb976dfd19a5b7314212b88b6de3807d13cd47 AS app-build
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl ca-certificates \
